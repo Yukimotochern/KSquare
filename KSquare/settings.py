@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'KSquare.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ks',
+        'USER': 'yukimoto',
+        'PASSWORD': 'a130153113',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
