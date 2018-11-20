@@ -1,7 +1,7 @@
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
-
+import knowledge
 # Create your models here.
 
 
@@ -41,9 +41,10 @@ class ForthRelationEntry(models.Model):
 # To and Forth are linked. One deleted also another.
 @receiver(post_delete, sender=ForthRelationEntry)
 def post_delete_to_relation_entry(sender, instance, *args, **kwargs):
+    sender, args, kwargs
     try:
         instance.to_relation_partner
-    except:
+    except knowledge.models.ToRelationEntry.DoesNotExist:
         return
     if instance.to_relation_partner:  # just in case user is not specified
         instance.to_relation_partner.delete()
