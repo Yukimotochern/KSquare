@@ -1,1 +1,1 @@
-web: gunicorn knowledgesquare.wsgi
+web: gunicorn KSquare.wsgi
