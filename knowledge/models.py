@@ -41,7 +41,6 @@ class ForthRelationEntry(models.Model):
 # To and Forth are linked. One deleted also another.
 @receiver(post_delete, sender=ForthRelationEntry)
 def post_delete_to_relation_entry(sender, instance, *args, **kwargs):
-    sender, args, kwargs
     try:
         instance.to_relation_partner
     except knowledge.models.ToRelationEntry.DoesNotExist:
