@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block main_content %}
+<div class="container-fluid jumbotron">
+    <div class="container">
+        <h2 class="display-4">Here's Your Relations and Links</h2>
+        <div class="row">
+            <div class="col-md-4">
+
+                <h3 class="display-5 my-4">連結種類（Relation）</h3>
+                {% if relation %}
+                    {% for re in relation %}
+                        {% if edit_relation_id %}
+                            {% if edit_relation_id == re.id|slugify %}
+                                <!--# Edit Relation-->
+                                <div class="card text-white bg-info text-white my-3" >
+                                    <form action="{% url 'edit_relation_save' %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="to_edit_relation" value="{{re.id}}"/>
+                                        <div class="card-header">
+                                            <input type="text" name="edited_relation_title" value="{{re.title}}" class="form-control">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <textarea name="edited_relation_content" class="form-control card-body">{{re.content}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="edited_relation_color">選一個顏色：</label>
+                                                <input type="color" name="edited_relation_color" id="edited_relation_color" class="form-control" value="{{re.color}}">
+                                            </div>
+                                            <div class="form-group d-flex justify-content-end">
+                                                <input type="submit" class="btn btn-success form-control" value="儲存修改">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <!--# Display Relation-->
+                                <div class="card bg-info text-white my-3">
+                                    <div class="card-header justify-content-between d-flex">
+                                        <h4 class="d-inline">{{re.title}}</h4>
+                                        <form method="post" class="d-inline">
+                                            {% csrf_token %}
+                                            <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'edit_relation' %}" name="edit_relation_id"><i class="fas fa-pen"></i></button>
+                                            <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'delete_relation' %}" name="delete_relation_id"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-text">{{re.content|linebreaks}}</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <!--# Display Relation-->
+                            <div class="card bg-info text-white my-3">
+                                <div class="card-header justify-content-between d-flex">
+                                    <h4 class="d-inline">{{re.title}}</h4>
+                                    <form method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'edit_relation' %}" name="edit_relation_id"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'delete_relation' %}" name="delete_relation_id"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text">{{re.content|linebreaks}}</div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <!--# New Relation-->
+                <div class="card bg-info text-white my-3">
+                    <form action="{% url 'create_relation' %}" method="post">
+                        {% csrf_token %}
+                        <div class="card-header">
+                            <input type="text" class="form-control h3" name="new_relation_title" placeholder="連結種類標題">
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <textarea name="new_relation_content" rows="1" class="form-control card-text" placeholder="連結種類細節"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="new_relation_color">選一個顏色：</label>
+                                <input type="color" name="new_relation_color" id="new_relation_color" class="form-control">
+                            </div>
+                            <div class="form-group d-flex justify-content-end">
+                                <input type="submit" class="form-control btn btn-success" value="新增連結種類">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-md-8">
+                <div class="container">
+                    <h3 class="display-5 my-4">概念連結（Link）</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -20,33 +20,33 @@ class Relation(models.Model):
     is_sym = models.BooleanField
 
 
-class ToRelationEntry(models.Model):
+class ToLink(models.Model):
     id = models.AutoField(primary_key=True)
     relation_main = models.ForeignKey(Relation, on_delete=models.CASCADE, null=True)
-    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='relation_to', null=True)
+    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='to_link', null=True)
     # Forth is To's ...
     f_is_t = models.CharField(max_length=30, null=True)
 
 
-class ForthRelationEntry(models.Model):
+class ForthLink(models.Model):
     id = models.AutoField(primary_key=True)
     relation_main = models.ForeignKey(Relation, on_delete=models.CASCADE, null=True)
-    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='relation_forth', null=True)
-    to_relation_partner = models.OneToOneField(ToRelationEntry, on_delete=models.CASCADE,
-                                               related_name='forth_relation_partner', null=True)
+    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='forth_link', null=True)
+    to_link_partner = models.OneToOneField(ToLink, on_delete=models.CASCADE, related_name='forth_link_partner'
+                                           , null=True)
     # To is Forth's ...
     t_is_f = models.CharField(max_length=30, null=True)
 
 
 # To and Forth are linked. One deleted also another.
-@receiver(post_delete, sender=ForthRelationEntry)
-def post_delete_to_relation_entry(sender, instance, *args, **kwargs):
+@receiver(post_delete, sender=ForthLink)
+def post_delete_to_link(sender, instance, *args, **kwargs):
     try:
-        instance.to_relation_partner
-    except knowledge.models.ToRelationEntry.DoesNotExist:
+        instance.to_link_partner
+    except knowledge.models.ToLink.DoesNotExist:
         return
-    if instance.to_relation_partner:  # just in case user is not specified
-        instance.to_relation_partner.delete()
+    if instance.to_link_partner:  # just in case user is not specified
+        instance.to_link_partner.delete()
 
 # @receiver(post_delete, sender=ToRelationEntry)
 # def post_delete_forth_relation_entry(sender, instance, *args, **kwargs):
