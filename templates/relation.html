@@ -262,6 +262,17 @@
                                             </div>
                                             <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.relation_main.t_is_f}}</div>
                                         </div>
+                                        <div class="row list-group-item-text my-2">
+                                            <div class="col-md-4 justify-content-center d-flex mt-2">{{tl.forth_link_partner.related_concept.title}}</div>
+                                            <div class="col-md-1 justify-content-center d-flex mt-2 ">
+                                                <span class="badge badge-secondary p-2">是</span>
+                                            </div>
+                                            <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.related_concept.title}}</div>
+                                            <div class="col-md-1 justify-content-center d-flex mt-2">
+                                                <span class="badge badge-secondary p-2">的</span>
+                                            </div>
+                                            <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.relation_main.f_is_t}}</div>
+                                        </div>
                                     </div>
                                 {% endif %}
                             {% else %}
@@ -285,6 +296,17 @@
                                             <span class="badge badge-secondary p-2">的</span>
                                         </div>
                                         <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.relation_main.t_is_f}}</div>
+                                    </div>
+                                    <div class="row list-group-item-text my-2">
+                                        <div class="col-md-4 justify-content-center d-flex mt-2">{{tl.forth_link_partner.related_concept.title}}</div>
+                                        <div class="col-md-1 justify-content-center d-flex mt-2 ">
+                                            <span class="badge badge-secondary p-2">是</span>
+                                        </div>
+                                        <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.related_concept.title}}</div>
+                                        <div class="col-md-1 justify-content-center d-flex mt-2">
+                                            <span class="badge badge-secondary p-2">的</span>
+                                        </div>
+                                        <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.relation_main.f_is_t}}</div>
                                     </div>
                                 </div>
                             {% endif %}
