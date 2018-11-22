@@ -7,9 +7,56 @@
             <div class="col-md-4">
 
                 <h3 class="display-5 my-4">連結種類（Relation）</h3>
+                <!--# New Relation-->
+                <div class="card bg-info text-white my-3">
+                    <form action="{% url 'create_relation' %}" method="post">
+                        {% csrf_token %}
+                        <div class="card-header">
+                            <input type="text" class="form-control mt-2 h3 bg-info text-white" name="new_relation_title" placeholder="連結種類標題">
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <textarea name="new_relation_content" rows="1" class="form-control card-text bg-info text-white" placeholder="連結種類細節"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" name="new_t_is_f" class="form-control bg-info text-white" placeholder="A是Ｂ的？">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="new_f_is_t" class="form-control bg-info text-white" placeholder="B是A的？">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4 pr-0 pt-2">
+                                        <label for="new_relation_color" class="mr-0">連結顏色：</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="color" name="new_relation_color" id="new_relation_color" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-end">
+                                <input type="submit" class="form-control btn btn-warning" value="新增連結種類">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--Search Box-->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="搜尋連結種類" name="link_filtering_terms">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-success">Go</button>
+                        </div>
+                    </div>
+                </form>
                 {% if relation %}
                     {% for re in relation %}
-                        {% if edit_relation_id %}
+                        {% if edit_view %}
                             {% if edit_relation_id == re.id|slugify %}
                                 <!--# Edit Relation-->
                                 <div class="card text-white bg-info text-white my-3" >
@@ -17,15 +64,31 @@
                                         {% csrf_token %}
                                         <input type="hidden" name="to_edit_relation" value="{{re.id}}"/>
                                         <div class="card-header">
-                                            <input type="text" name="edited_relation_title" value="{{re.title}}" class="form-control">
+                                            <input type="text" name="edited_relation_title" value="{{re.title}}" class="form-control bg-info text-white">
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <textarea name="edited_relation_content" class="form-control card-body">{{re.content}}</textarea>
+                                                <textarea name="edited_relation_content" class="form-control bg-info text-white">{{re.content}}</textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="edited_relation_color">選一個顏色：</label>
-                                                <input type="color" name="edited_relation_color" id="edited_relation_color" class="form-control" value="{{re.color}}">
+                                                <div class="row">
+                                                    <div class="col-md-4 pr-0 pt-2">
+                                                        <label for="edited_relation_color">連結顏色：</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="color" name="edited_relation_color" id="edited_relation_color" class="form-control " value="{{re.color}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="edited_t_is_f" class="form-control bg-info text-white" value="{{re.t_is_f}}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="edited_f_is_t" class="form-control bg-info text-white" value="{{re.f_is_t}}">
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-group d-flex justify-content-end">
                                                 <input type="submit" class="btn btn-success form-control" value="儲存修改">
@@ -67,36 +130,175 @@
                         {% endif %}
                     {% endfor %}
                 {% endif %}
-                <!--# New Relation-->
-                <div class="card bg-info text-white my-3">
-                    <form action="{% url 'create_relation' %}" method="post">
-                        {% csrf_token %}
-                        <div class="card-header">
-                            <input type="text" class="form-control h3" name="new_relation_title" placeholder="連結種類標題">
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <textarea name="new_relation_content" rows="1" class="form-control card-text" placeholder="連結種類細節"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="new_relation_color">選一個顏色：</label>
-                                <input type="color" name="new_relation_color" id="new_relation_color" class="form-control">
-                            </div>
-                            <div class="form-group d-flex justify-content-end">
-                                <input type="submit" class="form-control btn btn-success" value="新增連結種類">
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
 
 
             <div class="col-md-8">
                 <div class="container">
                     <h3 class="display-5 my-4">概念連結（Link）</h3>
+                    <p>{{b}}</p>
                 </div>
+
+                <!--New Link-->
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <form action="{% url 'create_link'%}" method="post">
+                            {% csrf_token %}
+                            <div class="list-group-heading">
+                                <div class="form-group form-inline">
+                                    <label for="new_link_relation_title" class="mr-2">連結種類：</label>
+                                <input id="new_link_relation_title" list="relation_main_list" class="form-control" placeholder="選擇或輸入並創建" name="new_link_relation_title">
+                                <datalist id="relation_main_list">
+                                    {% for re in relation %}
+                                        <option value="{{re.title}}"></option>
+                                    {% endfor %}
+                                </datalist>
+                                </div>
+                            </div>
+                            <div class="form-row list-group-item-text">
+                                <div class="col-md-4 justify-content-center d-flex mt-2 form-group">
+                                    <input class="form-control" list="new_to" name="new_to_concept_title" placeholder="選擇或輸入概念">
+                                    <datalist id="new_to">
+                                        {% for co in concept %}
+                                            <option value="{{co.title}}"></option>
+                                        {% endfor %}
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 justify-content-center d-flex pb-1 pt-1">
+                                    <span class="badge badge-secondary mt-2 pt-2 mb-3 px-2">是</span>
+                                </div>
+                                <div class="col-md-4 justify-content-center d-flex mt-2">
+                                    <input class="form-control" list="new_forth" name="new_forth_concept_title" placeholder="選擇或輸入概念">
+                                    <datalist id="new_forth">
+                                        {% for co in concept %}
+                                            <option value="{{co.title}}"></option>
+                                        {% endfor %}
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 justify-content-center align-middle d-flex pb-1 pt-1">
+                                    <p class="badge badge-secondary mt-2 pt-2 mb-3 px-2">的</p>
+                                </div>
+                                <div class="col-md-2  justify-content-center d-flex mt-2 pt-1">123</div>
+                            </div>
+                            <div class="form-row form-group d-flex justify-content-center mt-2 mb-2">
+                                <input type="submit" class="btn btn-success form-control" value="連結概念">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Search Box-->
+                <form action="" method="post" class="mt-3">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="搜尋連結" name="link_filtering_terms">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-success">Go</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="list-group">
+                    {% if to_link %}
+                        {% for tl in to_link %}
+                            {% if edit_link_view %}
+                                {% if edit_link_id == tl.id|slugify %}
+                                    <!--# Edit Link-->
+                                    <div class="list-group-item">
+                                        <div class="list-group-item-heading border border-top-0 border-left-0 border-right-0 p-1 d-flex justify-content-between" style="color: {{tl.relation_main.color}}">
+                                            <h4 class="d-inline">{{tl.relation_main.title}}</h4>
+                                        </div>
+                                        <form action="{% url 'edit_link_save' %}" method="post">
+                                            {% csrf_token %}
+                                            <div class="row list-group-item-text mt-2">
+                                                <input type="hidden" name="edited_link_id" value="{{tl.id}}">
+                                                <div class="col-md-1 justify-content-center d-flex mt-2 form-group"></div>
+                                                <div class="col-md-3 justify-content-center d-flex mt-2 form-group">
+                                                    <input class="form-control" list="to_list" name="edited_to_title" value="{{tl.related_concept.title}}" onfocus="this.value=''">
+                                                    <datalist id="to_list">
+                                                        {% for co in concept %}
+                                                            <option value="{{co.title}}"></option>
+                                                        {% endfor %}
+                                                    </datalist>
+                                                </div>
+                                                <div class="col-md-1 justify-content-center d-flex pb-1 pt-1">
+                                                    <span class="badge badge-secondary mt-2 pt-2 mb-3 mx-2 px-2">是</span>
+                                                </div>
+                                                <div class="col-md-3 justify-content-center d-flex mt-2">
+                                                    <input class="form-control" list="forth_list" name="edited_forth_title" value="{{tl.forth_link_partner.related_concept.title}}" onfocus="this.value=''">
+                                                    <datalist id="forth_list">
+                                                        {% for co in concept %}
+                                                            <option value="{{co.title}}"></option>
+                                                        {% endfor %}
+                                                    </datalist>
+                                                </div>
+                                                <div class="col-md-1 justify-content-center d-flex pb-1 pt-1">
+                                                    <span class="badge badge-secondary align-middle mt-2 pt-2 mb-3 mx-2 px-2">的</span>
+                                                </div>
+                                                <div class="col-md-3 justify-content-center d-flex mt-2 pt-1">{{tl.relation_main.t_is_f}}</div>
+                                            </div>
+                                            <div class="form-row form-group d-flex justify-content-center">
+                                                <input type="submit" class="btn btn-success form-control mt-2" value="儲存修改">
+                                            </div>
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    <!--# Display Link-->
+                                    <div class="list-group-item">
+                                        <div class="list-group-item-heading border border-top-0 border-left-0 border-right-0 p-1 d-flex justify-content-between" style="color: {{tl.relation_main.color}}">
+                                            <h4 class="d-inline">{{tl.relation_main.title}}</h4>
+                                            <form method="post" class="d-inline">
+                                                {% csrf_token %}
+                                                <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'edit_link' %}" name="edit_link_id"><i class="fas fa-pen"></i></button>
+                                                <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'delete_link' %}" name="delete_link_id"><i class="far fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                        <div class="row list-group-item-text my-2">
+                                            <div class="col-md-4 justify-content-center d-flex mt-2">{{tl.related_concept.title}}</div>
+                                            <div class="col-md-1 justify-content-center d-flex mt-2 ">
+                                                <span class="badge badge-secondary p-2">是</span>
+                                            </div>
+                                            <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.forth_link_partner.related_concept.title}}</div>
+                                            <div class="col-md-1 justify-content-center d-flex mt-2">
+                                                <span class="badge badge-secondary p-2">的</span>
+                                            </div>
+                                            <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.relation_main.t_is_f}}</div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <!--# Display Link-->
+                                <div class="list-group-item">
+                                    <div class="list-group-item-heading border border-top-0 border-left-0 border-right-0 p-1 d-flex justify-content-between" style="color: {{tl.relation_main.color}}">
+                                        <h4 class="d-inline">{{tl.relation_main.title}}</h4>
+                                        <form method="post" class="d-inline">
+                                            {% csrf_token %}
+                                            <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'edit_link' %}" name="edit_link_id"><i class="fas fa-pen"></i></button>
+                                            <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'delete_link' %}" name="delete_link_id"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="row list-group-item-text my-2">
+                                        <div class="col-md-4 justify-content-center d-flex mt-2">{{tl.related_concept.title}}</div>
+                                        <div class="col-md-1 justify-content-center d-flex mt-2 ">
+                                            <span class="badge badge-secondary p-2">是</span>
+                                        </div>
+                                        <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.forth_link_partner.related_concept.title}}</div>
+                                        <div class="col-md-1 justify-content-center d-flex mt-2">
+                                            <span class="badge badge-secondary p-2">的</span>
+                                        </div>
+                                        <div class="col-md-3 justify-content-center d-flex mt-2">{{tl.relation_main.t_is_f}}</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!--TODO: Copy this Link Functionality-->
             </div>
         </div>
     </div>
 </div>
+<!--<script>-->
+    <!--$( "#new_link" ).change(function() {-->
+        <!--alert( "Handler for .change() called." );-->
+    <!--});-->
+<!--</script>-->
 {% endblock %}

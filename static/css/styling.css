@@ -1,0 +1,26 @@
+/* color for place holder */
+div.card textarea.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+div.card textarea.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+
+div.card textarea.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+}
+
+div.card input.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+div.card input.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+
+div.card input.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+}

@@ -15,8 +15,11 @@ urlpatterns = [
     path('relation/edit', views.edit_relation, name="edit_relation"),
     path('relation/edit/save', views.edit_relation_save, name="edit_relation_save"),
     path('relation/delete', views.delete_relation, name="delete_relation"),
-    #
-    # path('relation/entry/create', name=""),
-    # path('relation/entry/edit',name=""),
-    # path('relation/entry/delete',name=""),
+
+    path('relation/link/create', views.create_link, name="create_link"),
+    path('relation/link/edit', views.edit_link, name="edit_link"),
+    path('relation/link/save', views.edit_link_save, name="edit_link_save"),
+    path('relation/link/delete', views.delete_link, name="delete_link"),
 ]
+
+
