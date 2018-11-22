@@ -3,6 +3,8 @@ from django.db import transaction
 from knowledge.models import Concept, Relation, ToLink, ForthLink
 from knowledge.models import get_or_create_by_title
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
+
 # Create your views here.
 
 # Concept Part
@@ -197,6 +199,18 @@ def delete_link(request):
     return render(request, 'relation.html', locals())
 
 
+def find_to_name(request):
+    cur_title = request.GET['current_new_link_relation_title']
+    try:
+        ti = Relation.objects.get(_title=cur_title)
+    except Relation.DoesNotExist:
+        ti = None
+    if ti is None:
+        t_is_f = "尚未建立"
+    else:
+        t_is_f = ti.t_is_f
+    sent_dict = {"t_is_f": t_is_f}
+    return JsonResponse(sent_dict)
 
 
 

@@ -20,6 +20,8 @@ urlpatterns = [
     path('relation/link/edit', views.edit_link, name="edit_link"),
     path('relation/link/save', views.edit_link_save, name="edit_link_save"),
     path('relation/link/delete', views.delete_link, name="delete_link"),
+
+    path('relation/link/get_to_title', views.find_to_name, name="find_to_name")
 ]
 
 
