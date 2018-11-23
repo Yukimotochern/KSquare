@@ -43,13 +43,13 @@ class Relation(models.Model):
 class ToLink(models.Model):
     id = models.AutoField(primary_key=True)
     relation_main = models.ForeignKey(Relation, on_delete=models.CASCADE, null=True)
-    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='to_link', null=True)
+    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='to_links', null=True)
 
 
 class ForthLink(models.Model):
     id = models.AutoField(primary_key=True)
     relation_main = models.ForeignKey(Relation, on_delete=models.CASCADE, null=True)
-    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='forth_link', null=True)
+    related_concept = models.ForeignKey(Concept, on_delete=models.CASCADE, related_name='forth_links', null=True)
     to_link_partner = models.OneToOneField(ToLink, on_delete=models.CASCADE, related_name='forth_link_partner'
                                            , null=True)
 
@@ -76,7 +76,9 @@ def get_or_create_by_title(cls, title_in=""):
     try:
         ob = cls.objects.get(_title=title_in)
     except cls.DoesNotExist:
-        ob = cls.objects.create(_title=title_in)
+        ob = cls.objects.create()
+        ob.title = title_in
+        ob.save()
     return ob
 
 

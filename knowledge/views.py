@@ -213,6 +213,14 @@ def find_to_name(request):
     return JsonResponse(sent_dict)
 
 
+#  Tree Explore Part
+
+
+def tree(request):
+
+    return render(request, 'square_tree.html', locals())
+
+
 
 
 
