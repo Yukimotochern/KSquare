@@ -219,7 +219,6 @@ def find_to_name(request):
 
 def tree(request, main_view_id):
     main_model_concept = get_object_or_404(Concept, id=main_view_id)
-    typ = type(main_model_concept)
     tree_view_model = TreeViewModel(main_model_concept)
     positioned_page = TreeViewModel.positioning(tree_view_model.tree_cell_page)
     return render(request, 'square_tree.html', locals())

@@ -32,7 +32,6 @@ class TreeViewModel:
         links = []
         links.extend(list(main_view_concept.to_links.all()))
         links.extend(list(main_view_concept.forth_links.all()))
-
         concept_group_by_relation_list = []
         for li in links:
             print(len(links))
@@ -171,6 +170,7 @@ class TreeViewModel:
             po_to_assign = iter(po)
             for c in cells:
                 c.position = next(po_to_assign)
+        return cells
 
 
 

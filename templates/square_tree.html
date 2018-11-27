@@ -28,16 +28,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body scroll-box">
+                        <div class="card-body py-1 m-0 scroll-box">
                             <p class="card-text">{{cell.ob.content|linebreaks}}</p>
                         </div>
                     </div>
                 {% endif %}
             {% endfor %}
             <div class="card current_view">
-                <div class="card-header h1">{{main_mode_concept.title}}{{main_view_id}}</div>
-                <div class="card-body">
-                    <p class="card-text">{{main_mode_concept.content|linebreaks}}{{typ}}</p>
+                <div class="card-header h1">{{tree_view_model.main_view_concept.title}}</div>
+                <div class="card-body py-1 m-0 scroll-box">
+                    <p class="card-text">{{tree_view_model.main_view_concept.content|linebreaks}}</p>
                 </div>
             </div>
         </div>
