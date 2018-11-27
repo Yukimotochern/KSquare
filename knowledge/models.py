@@ -11,6 +11,9 @@ class Concept(models.Model):
     content = models.TextField()
     click_number = models.IntegerField(default=0, null=False)
 
+    def __eq__(self, other):
+        return self.id == other.id
+
     @property
     def title(self):
         return self._title
@@ -30,6 +33,9 @@ class Relation(models.Model):
     t_is_f = models.CharField(max_length=30, null=True)
     # Forth is To's ...
     f_is_t = models.CharField(max_length=30, null=True)
+
+    def __eq__(self, other):
+        return self.id == other.id
 
     @property
     def title(self):

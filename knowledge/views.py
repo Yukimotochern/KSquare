@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.db import transaction
 from knowledge.models import Concept, Relation, ToLink, ForthLink
 from knowledge.models import get_or_create_by_title
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
+from knowledge.treeview import TreeViewModel
 
 # Create your views here.
 
@@ -216,9 +217,17 @@ def find_to_name(request):
 #  Tree Explore Part
 
 
-def tree(request):
-
+def tree(request, main_view_id):
+    main_model_concept = get_object_or_404(Concept, id=main_view_id)
+    typ = type(main_model_concept)
+    tree_view_model = TreeViewModel(main_model_concept)
+    positioned_page = TreeViewModel.positioning(tree_view_model.tree_cell_page)
     return render(request, 'square_tree.html', locals())
+
+
+def all_concepts(request):
+    concepts = Concept.objects.all()
+    return render(request, 'total_explore.html', locals())
 
 
 

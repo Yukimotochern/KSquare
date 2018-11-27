@@ -1,89 +1,47 @@
 {% extends 'base.html' %}
 {% block main_content %}
 {% load staticfiles %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
+<link rel="stylesheet" type="text/css" href = "{% static '/css/square_tree.css' %}"/>
+<div id="main_back_learn_view" class="container-fluid">
+     <div class="container">
         <div id="main_view_grid" class="grid-container">
-            <div class="card lt">
-                <div class="card-header">123</div>
-                <div class="card-body scroll-box">
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid atque commodi consequuntur error magni minus molestias natus neque nobis pariatur quo repellendus sit, voluptate? Autem deleniti dolor mollitia nam nemo nostrum placeat! Accusantium amet aspernatur, cupiditate eaque et facilis hic iusto, labore laudantium maiores natus quas quod suscipit vel velit veniam, voluptate. A ad autem debitis delectus dicta eligendi esse et eveniet illum incidunt ipsam libero maxime minima molestiae molestias nostrum perferendis perspiciatis placeat porro quae quas quisquam quo, reiciendis repellat sint sit sunt tenetur veniam voluptatem voluptates. Commodi culpa delectus esse fugiat id illum ipsam, modi repellat tenetur vero!</p>
-                </div>
-            </div>
-            <div class="card t1">
-                <div class="card-header">123</div>
-                <div class="card-body scroll-box">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card t2">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card rt">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">lorem100</p>
-                </div>
-            </div>
-            <div class="card r1">
-                <div class="card-header">r1</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card r2">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card l1">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card l2">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card rb">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card b1">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card b2">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
-            <div class="card lb">
-                <div class="card-header">123</div>
-                <div class="card-body">
-                    <p class="card-text">123</p>
-                </div>
-            </div>
+            {% for cell in positioned_page %}
+                {% if cell.re %}
+                    <!--relation-->
+                    <div class="card {{cell.position}} text-center py-4">
+                        <div class="card-body ">
+                            <h3 class="card-title">{{cell.ob.title}}</h3>
+                            <p class="card-text">{{cell.related_string}}</p>
+                            <button class="btn btn-outline-info"><i class="fas fa-plus-circle mr-2"></i>新概念</button>
+                        </div>
+                    </div>
+                {% else %}
+                    <!--concept(s)-->
+                    <div class="card {{cell.position}}">
+                        <div class="card-header h5">{{cell.ob.title}} <span class="badge badge-secondary">同</span>
+                            <div class="dropdown float-right m-0 p-0">
+                                <button class="btn m-0 py-0 px-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
+                                <div class="dropdown-menu px-0 py-1 m-0" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="#">Pin</a>
+                                    <a class="dropdown-item" href="#">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body scroll-box">
+                            <p class="card-text">{{cell.ob.content|linebreaks}}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
             <div class="card current_view">
-                <div class="card-header">123</div>
+                <div class="card-header h1">{{main_mode_concept.title}}{{main_view_id}}</div>
                 <div class="card-body">
-                    <p class="card-text">123</p>
+                    <p class="card-text">{{main_mode_concept.content|linebreaks}}{{typ}}</p>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
 {% endblock %}

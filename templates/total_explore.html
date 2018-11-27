@@ -1,10 +1,33 @@
 {% extends 'base.html' %}
 {% block main_content %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h3 class="display-3">Pick One to Start Your Journey!</h3>
-        <div class="lead">Enjoy~~</div>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href = "{% static '/css/total_explore.css' %}"/>
+<div class="container " id="main_back_learn_view">
+    <h3 class="display-4">Pick One to Start Your Journey!</h3>
+    <div class="lead">Enjoy~~</div>
+    <div class="container m-3">
+        {% if concepts %}
+            {% for co in concepts %}
+                <div class="card m-3">
+                    <div class="card-header h5"><a class="mx-2" href="{% url 'learn' co.id %}">{{co.title}}</a>
+                        <div class="dropdown float-right m-0 p-0">
+                            <button class="btn m-0 py-0 px-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
+                            <div class="dropdown-menu px-0 py-1 m-0" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Pin</a>
+                                <a class="dropdown-item" href="#">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body scroll-box">
+                        <p class="card-text">{{co.content|linebreaks}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
 
     </div>
+
+
 </div>
 {% endblock %}

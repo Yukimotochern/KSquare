@@ -1,0 +1,30 @@
+html > body {
+    background-color: #eeeeee;
+}
+
+div.card-header > div.dropdown > div.dropdown-menu {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+div.card > div.scroll-box {
+    overflow-y: scroll;
+
+}
+
+#main_back_learn_view {
+    padding: 50px;
+
+}
+.container > div.card {
+    height: 250px;
+    width: 250px;
+}
+
+#main_back_learn_view .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+

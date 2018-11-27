@@ -47,6 +47,20 @@ div.card > div.scroll-box {
     height: 100px;
 }
 
+#main_back_learn_view {
+    padding: 50px;
+
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+div.card-header > div.dropdown > div.dropdown-menu {
+    min-width: 100px;
+    max-width: 100px;
+}
+
 
 
 
