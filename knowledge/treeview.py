@@ -30,8 +30,9 @@ class TreeViewModel:
     def __init__(self, main_view_concept):
         self.main_view_concept = main_view_concept
         links = []
-        links.extend(list(main_view_concept.to_links.all()))
-        links.extend(list(main_view_concept.forth_links.all()))
+
+        links.extend([a.forth_link_partner for a in list(main_view_concept.to_links.all())])
+        links.extend([a.to_link_partner for a in list(main_view_concept.forth_links.all())])
         concept_group_by_relation_list = []
         for li in links:
             print(len(links))
@@ -42,12 +43,15 @@ class TreeViewModel:
                         found = True
                         cgbrl.total_concepts.append(li.related_concept)
                         if isinstance(li, ToLink):
-                            cgbrl.related_string = li.relation_main.f_is_t
-                        else:
                             cgbrl.related_string = li.relation_main.t_is_f
+                        else:
+                            cgbrl.related_string = li.relation_main.f_is_t
                         break
             if not found:
-                cgbrl = ConceptsGroupByRelation(relation=li.relation_main)
+                if isinstance(li, ToLink):
+                    cgbrl = ConceptsGroupByRelation(relation=li.relation_main, related_string=li.relation_main.t_is_f)
+                else:
+                    cgbrl = ConceptsGroupByRelation(relation=li.relation_main, related_string=li.relation_main.f_is_t)
                 cgbrl.total_concepts.append(li.related_concept)
                 concept_group_by_relation_list.append(cgbrl)
         tree_cell_pages = []

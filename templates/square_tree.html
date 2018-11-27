@@ -18,7 +18,7 @@
                 {% else %}
                     <!--concept(s)-->
                     <div class="card {{cell.position}}">
-                        <div class="card-header h5">{{cell.ob.title}} <span class="badge badge-secondary">同</span>
+                        <div class="card-header h5" ><span onclick="javascript:location.href='{% url "learn" cell.ob.id %}'">{{cell.ob.title}}</span> <span class="badge badge-secondary">同</span>
                             <div class="dropdown float-right m-0 p-0">
                                 <button class="btn m-0 py-0 px-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
                                 <div class="dropdown-menu px-0 py-1 m-0" aria-labelledby="dropdownMenuButton">
