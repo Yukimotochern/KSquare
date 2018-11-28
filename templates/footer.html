@@ -35,7 +35,6 @@
         $( "#new_link_relation_title" ).select(function() {
         var current_new_link_relation_title = $("#new_link_relation_title").val()
         $.getJSON("{% url 'find_to_name' %}",{'current_new_link_relation_title': current_new_link_relation_title}, function(ret){
-            console.log(ret["t_is_f"]);
             $('#t_is_f_cur').text(ret["t_is_f"]);
             })
         })

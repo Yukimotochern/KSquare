@@ -4,7 +4,7 @@ from knowledge.models import Concept, Relation, ToLink, ForthLink
 from knowledge.models import get_or_create_by_title
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
-from knowledge.treeview import TreeViewModel
+from knowledge.treeview import TreeViewModel, positioning
 
 # Create your views here.
 
@@ -220,7 +220,7 @@ def find_to_name(request):
 def tree(request, main_view_id):
     main_model_concept = get_object_or_404(Concept, id=main_view_id)
     tree_view_model = TreeViewModel(main_model_concept)
-    positioned_page = TreeViewModel.positioning(tree_view_model.tree_cell_page)
+    positioned_page = positioning(tree_view_model.tree_cell_page)
     return render(request, 'square_tree.html', locals())
 
 
