@@ -96,10 +96,11 @@ def positioning(cells):
     cell_num = re_num + co_num
     space_num = 12 - cell_num
     po = ['lt', 't1', 't2', 'rt', 'r1', 'r2', 'rb', 'b2', 'b1', 'lb', 'l2', 'l1', ]
-    by_sequence = False
     if re_num == 6 or re_num == 1:
-        by_sequence = True
-    elif re_num == 5 or re_num == 4:
+        po_to_assign = iter(po)
+        for c in cells:
+            c.position = next(po_to_assign)
+    else:
         po_to_assign = iter(po)
         cell_to_assign = iter(cells)
         re_to_assign = iter(co_num_by_re)
@@ -109,77 +110,30 @@ def positioning(cells):
                 next(cell_to_assign).position = next(po_to_assign)
                 try:
                     cr = next(re_to_assign)
-                    if cr == 1 and space_num != 0:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
+                    sp = 0
+                    if cr == 1:
+                        if space_num >= 4:
+                            sp = 4
+                        elif space_num >= 1:
+                            sp = 1
+                    elif cr == 2:
+                        if space_num >= 3:
+                            sp = 3
+                    elif cr == 3:
+                        if space_num >= 2:
+                            sp = 2
+                    elif cr == 4:
+                        if space_num >= 1:
+                            sp = 1
+                    space_num -= sp
+                    for i in range(cr - 1):
+                        next(cell_to_assign).position = next(po_to_assign)
+                    for i in range(sp):
                         next(po_to_assign)
-                        space_num -= 1
-                    elif cr == 2 and space_num >= 3:
-                        for i in range(cr - 1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                        for i in range(3):
-                            next(po_to_assign)
-                        space_num -= 3
-                    elif cr == 3 and space_num >= 2:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                        for i in range(2):
-                            next(po_to_assign)
-                        space_num -= 2
-                    elif cr == 4 and space_num >= 1:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                        next(po_to_assign)
-                        space_num -= 1
-                    else:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
                 except StopIteration:
                     continue
             except StopIteration:
                 break
-    elif re_num == 3 or re_num == 2:
-        po_to_assign = iter(po)
-        cell_to_assign = iter(cells)
-        re_to_assign = iter(co_num_by_re)
-        while True:
-            try:
-                cr = next(re_to_assign)
-                next(cell_to_assign).position = next(po_to_assign)
-                next(cell_to_assign).position = next(po_to_assign)
-                try:
-                    if cr == 1 and space_num > 4:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                        for i in range(4):
-                            next(po_to_assign)
-                        space_num -= 4
-                    elif cr == 2 and space_num > 4:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                        for i in range(3):
-                            next(po_to_assign)
-                        space_num -= 3
-                    elif cr == 1 and space_num > 2:
-                        for i in range(cr-1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                        for i in range(2):
-                            next(po_to_assign)
-                        space_num -= 2
-                    elif cr == 1 and space_num > 1:
-                        next(po_to_assign)
-                        space_num -= 1
-                    else:
-                        for i in range(cr - 1):
-                            next(cell_to_assign).position = next(po_to_assign)
-                except StopIteration:
-                    continue
-            except StopIteration:
-                break
-    if by_sequence:
-        po_to_assign = iter(po)
-        for c in cells:
-            c.position = next(po_to_assign)
     return cells
 
 
