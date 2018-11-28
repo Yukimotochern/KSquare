@@ -9,15 +9,19 @@
         {% if concepts %}
             {% for co in concepts %}
                 <div class="card m-3">
-                    <div class="card-header h5"><a class="mx-2" href="{% url 'learn' co.id %}">{{co.title}}</a>
-                        <div class="dropdown float-right m-0 p-0">
-                            <button class="btn m-0 py-0 px-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-                            <div class="dropdown-menu px-0 py-1 m-0" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Pin</a>
-                                <a class="dropdown-item" href="#">Details</a>
+                    <div class="card-header h5">
+                        <div class="row">
+                            <a class="mx-0 col-11" href="{% url 'learn' co.id %}">{{co.title}}</a>
+                            <div class="dropdown col-1 float-right m-0 p-0">
+                                <button class="btn m-0 py-0 px-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
+                                <div class="dropdown-menu px-0 py-1 m-0" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="#">Pin</a>
+                                    <a class="dropdown-item" href="#">Details</a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="card-body m-0 py-1 scroll-box">
                         <p class="card-text">{{co.content|linebreaks}}</p>
