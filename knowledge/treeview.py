@@ -139,32 +139,32 @@ def positioning(cells):
         while True:
             try:
                 cr = next(re_to_assign)
-                this_assign = 1
                 next(cell_to_assign).position = next(po_to_assign)
                 next(cell_to_assign).position = next(po_to_assign)
                 try:
                     if cr == 1 and space_num > 4:
-                        print(1)
+                        for i in range(cr-1):
+                            next(cell_to_assign).position = next(po_to_assign)
                         for i in range(4):
                             next(po_to_assign)
                         space_num -= 4
-                        this_assign += 4
                     elif cr == 2 and space_num > 4:
+                        for i in range(cr-1):
+                            next(cell_to_assign).position = next(po_to_assign)
                         for i in range(2):
                             next(po_to_assign)
                         space_num -= 2
-                        this_assign += 2
                     elif cr == 1 and space_num > 2:
+                        for i in range(cr-1):
+                            next(cell_to_assign).position = next(po_to_assign)
                         for i in range(2):
                             next(po_to_assign)
                         space_num -= 2
-                        this_assign += 2
                     elif cr == 1 and space_num > 1:
                         next(po_to_assign)
                         space_num -= 1
-                        this_assign += 1
                     else:
-                        for i in range(cr - this_assign):
+                        for i in range(cr - 1):
                             next(cell_to_assign).position = next(po_to_assign)
                 except StopIteration:
                     continue
