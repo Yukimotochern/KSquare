@@ -114,12 +114,18 @@ def positioning(cells):
                             next(cell_to_assign).position = next(po_to_assign)
                         next(po_to_assign)
                         space_num -= 1
+                    elif cr == 2 and space_num >= 3:
+                        for i in range(cr - 1):
+                            next(cell_to_assign).position = next(po_to_assign)
+                        for i in range(3):
+                            next(po_to_assign)
+                        space_num -= 3
                     elif cr == 3 and space_num >= 2:
                         for i in range(cr-1):
                             next(cell_to_assign).position = next(po_to_assign)
                         for i in range(2):
                             next(po_to_assign)
-                            space_num -= 1
+                        space_num -= 2
                     elif cr == 4 and space_num >= 1:
                         for i in range(cr-1):
                             next(cell_to_assign).position = next(po_to_assign)
@@ -151,9 +157,9 @@ def positioning(cells):
                     elif cr == 2 and space_num > 4:
                         for i in range(cr-1):
                             next(cell_to_assign).position = next(po_to_assign)
-                        for i in range(2):
+                        for i in range(3):
                             next(po_to_assign)
-                        space_num -= 2
+                        space_num -= 3
                     elif cr == 1 and space_num > 2:
                         for i in range(cr-1):
                             next(cell_to_assign).position = next(po_to_assign)
