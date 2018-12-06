@@ -25,6 +25,11 @@ urlpatterns = [
 
     url(r'square-tree/(?P<main_view_id>[0-9]+)/view', views.tree, name="learn"),
     path('total_explore/', views.all_concepts, name='all_concept'),
+
+
+    path('my_square/', views.field, name='field'),
+
+
 ]
 
 

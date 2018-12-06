@@ -229,6 +229,9 @@ def all_concepts(request):
     return render(request, 'total_explore.html', locals())
 
 
+def field(request):
+    return render(request, 'personal/field.html', locals())
+
 
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect   # 加入 redirect 套件
+from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.http import HttpResponse
