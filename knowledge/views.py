@@ -132,17 +132,18 @@ def delete_relation(request):
 # Link Part
 @transaction.atomic
 def create_link(request):
-    # Find the 'to' concept objects if no create one
-    to_concept = get_or_create_by_title(Concept, request.POST["new_to_concept_title"])
-    # Find the 'forth' concept objects if no create one
-    forth_concept = get_or_create_by_title(Concept, request.POST["new_forth_concept_title"])
-    # Find the 'relation' objects if no create one
-    link_relation = get_or_create_by_title(Relation, request.POST["new_link_relation_title"])
-    # Create 'to' object
-    to_link_ob = ToLink.objects.create(relation_main=link_relation, related_concept=to_concept)
-    # Create 'forth' object
-    forth_link_ob = ForthLink.objects.create(relation_main=link_relation, related_concept=forth_concept,
-                                             to_link_partner=to_link_ob)
+    with transaction.atomic():
+        # Find the 'to' concept objects if no create one
+        to_concept = get_or_create_by_title(Concept, request.POST["new_to_concept_title"])
+        # Find the 'forth' concept objects if no create one
+        forth_concept = get_or_create_by_title(Concept, request.POST["new_forth_concept_title"])
+        # Find the 'relation' objects if no create one
+        link_relation = get_or_create_by_title(Relation, request.POST["new_link_relation_title"])
+        # Create 'to' object
+        to_link_ob = ToLink.objects.create(relation_main=link_relation, related_concept=to_concept)
+        # Create 'forth' object
+        forth_link_ob = ForthLink.objects.create(relation_main=link_relation, related_concept=forth_concept,
+                                                 to_link_partner=to_link_ob)
 
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
@@ -229,8 +230,6 @@ def all_concepts(request):
     return render(request, 'total_explore.html', locals())
 
 
-def field(request):
-    return render(request, 'personal/field.html', locals())
 
 
 

@@ -27,9 +27,6 @@ urlpatterns = [
     path('total_explore/', views.all_concepts, name='all_concept'),
 
 
-    path('my_square/', views.field, name='field'),
-
-
 ]
 
 

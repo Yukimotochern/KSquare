@@ -2,10 +2,12 @@
     DEMO STYLE
 */
 
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
+    overflow: hidden;
 }
 
 p {
@@ -25,12 +27,12 @@ a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
+    padding: 10px;
+    padding-bottom: 4px;
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
 .navbar-btn {
@@ -53,6 +55,7 @@ a:focus {
 .wrapper {
     display: flex;
     width: 100%;
+    height: 100vh;
 }
 
 #sidebar {
@@ -65,6 +68,7 @@ a:focus {
     background: #073A5A;
     color: #fff;
     transition: all 0.3s;
+    overflow: scroll;
 }
 
 #sidebar.active {
@@ -78,7 +82,9 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
+    /*
     border-bottom: 1px solid #47748b;
+    */
 }
 
 #sidebar ul p {
@@ -88,6 +94,7 @@ a:focus {
 
 #sidebar ul li a {
     padding: 10px;
+    padding-left: 17px;
     font-size: 1.1em;
     display: block;
 }
@@ -117,8 +124,8 @@ a[data-toggle="collapse"] {
 
 ul ul a {
     font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #0C94A7;
+    padding-left: 32px !important;
+    background: #3498DB;
 }
 
 ul.CTAs {
@@ -150,13 +157,14 @@ a.article:hover {
 
 #content {
     width: calc(100% - 250px);
-    padding: 50px;
-    padding-top: 15px;
-    min-height: 100vh;
+    padding: 0px;
+    padding-top: 0px;
     transition: all 0.3s;
     position: absolute;
     top: 0;
     right: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
 #content.active {
@@ -184,3 +192,14 @@ a.article:hover {
         display: none;
     }
 }
+
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+
+

@@ -1,5 +1,7 @@
 from django.test import TestCase
-from knowledge.models import ToLink, ForthLink
+from knowledge.models import ToLink, ForthLink, Link, Concept
+from django.db import IntegrityError, transaction
+import time
 # Create your tests here.
 
 
@@ -19,11 +21,26 @@ class ToForthTestCase(TestCase):
         c.delete()
         self.assertFalse(d in ForthLink.objects.all())
 
-    # def test_to_delete_forth_delete(self):
-    #     """If To deleted so should Forth"""
-    #     a = ToRelationEntry.objects.create()
-    #     b = ForthRelationEntry.objects.create(to_relation_partner=a)
-    #     a.delete()
-    #     self.assertFalse(b in ForthRelationEntry.objects.all())
+    # def test_concept_unique(self):
+    #     """Catch non-unique error inside transaction"""
+    #     a = None
+    #     b = None
+    #
+    #     @transaction.atomic
+    #     def create_two():
+    #         global a, b
+    #         with transaction.atomic():
+    #             a = Concept.objects.create(_title='try')
+    #             b = Concept.objects.create(_title='try')
+    #     try:
+    #         create_two()
+    #     except IntegrityError as e:
+    #         self.assertTrue('unique constraint' in e.args[0])
+    #         self.assertTrue(a is None)
+
+    def test_create_concept(self):
+        a = Concept.objects.create(_title='try')
+        a.modify_time = time.time()
+        self.assertTrue(a in Concept.objects.all())
 
 

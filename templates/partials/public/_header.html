@@ -30,12 +30,12 @@
                 <!--</li>-->
                 <!--<li class="nav-item">-->
                     <!--<a class="nav-link" href="{% url 'all_concept' %}">探索學習</a>-->
-                </li>
+                <!--</li>-->
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="{% url 'field' %}">
+                        <a class="nav-link" href="{% url 'fields' %}">
                             <i class="fab fa-squarespace"></i>
                             {{user.username}}'s Square
                         </a>

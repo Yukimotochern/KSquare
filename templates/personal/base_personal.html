@@ -22,68 +22,66 @@
         <div class="wrapper">
             {% include 'partials/personal/_header_personal.html' %}
             <div id="content">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button type="button" id="sidebarCollapse" class="btn btn-light nav-link">
-                        <i class="fas fa-bars"></i>
-                        <span></span>
-                    </button>
-                    <ul class="navbar-nav ml-auto">
-                            <li class="nav-item mr-2">
-                                <a class="nav-link" href="{% url 'home' %}">
-                                    <i class="fab fa-squarespace"></i>
-                                    KSquare
-                                </a>
-                            </li>
-                        {% if user.is_authenticated %}
+                <div class="stack px-2">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed mt-3">
+                        <button type="button" id="sidebarCollapse" class="btn btn-light nav-link">
+                            <i class="fas fa-bars"></i>
+                            <span></span>
+                        </button>
+                        <ul class="navbar-nav ml-auto">
+                            <!--<li class="nav-item">-->
+                                <!--<a href="{% url 'all_concept' %}" class="nav-link">Learn</a>-->
+                            <!--</li>-->
+                            <!--<li class="nav-item">-->
+                                <!--<a href="{% url 'concept_manage'%}" class="nav-link">Create</a>-->
+                            <!--</li>-->
+                            <!--<li class="nav-item">-->
+                                <!--<a href="{% url 'concept_manage'%}" class="nav-link">Concepts</a>-->
+                            <!--</li>-->
+                            <!--<li class="nav-item">-->
+                                <!--<a href="{% url 'relation_manage' %}" class="nav-link">Relations</a>-->
+                            <!--</li>-->
+                            <!--<li class="nav-item">-->
+                                <!--<a href="{% url 'relation_manage' %}" class="nav-link">Links</a>-->
+                            <!--</li>-->
                             <!--<li class="nav-item mr-2">-->
-                                <!--<a class="nav-link" href="{% url 'field' %}">-->
+                                <!--<a class="nav-link" href="{% url 'home' %}">-->
                                     <!--<i class="fab fa-squarespace"></i>-->
-                                    <!--{{user.username}}'s Square-->
+                                    <!--KSquare-->
                                 <!--</a>-->
                             <!--</li>-->
-                            <li class="nav-item mr-2">
-                                <a class="nav-link" href="{% url 'account_logout' %}">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    Sign out
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item mr-2">
-                                <a class="nav-link" href="{% url 'account_signup' %}">
-                                    <i class="fas fa-user-plus"></i>
-                                    Register
-                                </a>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <a class="nav-link" href="{% url 'account_login' %}">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                    Login
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-                <nav class="navbar navbar-light navbar-expand-lg">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="{% url 'all_concept' %}" class="nav-link">Learn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'concept_manage'%}" class="nav-link">Create</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'concept_manage'%}" class="nav-link">Concepts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'relation_manage' %}" class="nav-link">Relations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'relation_manage' %}" class="nav-link">Links</a>
-                        </li>
-                    </ul>
-                </nav>
-                {% block content %}
-                {% endblock %}
+                            {% if user.is_authenticated %}
+                                <!--<li class="nav-item mr-2">-->
+                                    <!--<a class="nav-link" href="{% url 'fields' %}">-->
+                                        <!--<i class="fab fa-squarespace"></i>-->
+                                        <!--{{user.username}}'s Square-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <li class="nav-item mr-2">
+                                    <a class="nav-link" href="{% url 'account_logout' %}">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Sign out
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item mr-2">
+                                    <a class="nav-link" href="{% url 'account_signup' %}">
+                                        <i class="fas fa-user-plus"></i>
+                                        Register
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-2">
+                                    <a class="nav-link" href="{% url 'account_login' %}">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        Login
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% block content %}
+                    {% endblock %}
+                </div>
             </div>
             {% include 'partials/personal/_footer_personal.html' %}
         </div>

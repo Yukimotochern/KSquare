@@ -1,0 +1,81 @@
+{% extends 'personal/base_personal.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--Custon CSS-->
+<link rel="stylesheet" type="text/css" href = "{% static '/css/personal_create/fields.css' %}"/>
+<div class="container-fluid px-5 mt-4 mb-0">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'fields'%}">Fields</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Concepts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Relations</a>
+        </li>
+    </ul>
+</div>
+<div class="boards">
+    <div class="board">
+        <div class="card mx-2 mt-4 mb-4" id="all_fields">
+            <div class="card-header border-bottom-0 text-center py-2">
+                Knowlege Fields
+            </div>
+            <div class="card-body scroll py-0 px-2">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                </div>
+            </div>
+            <div class="card-footer border-top-0 text-center">
+                bla bla bla
+            </div>
+        </div>
+    </div>
+    <div class="board">
+        <div class="card mx-2 mt-4 mb-4">
+            <div class="card-header border-bottom-0 text-center py-2">
+                Templates
+            </div>
+            <div class="card-body scroll py-0 px-2">
+                <div class="list-group">
+                </div>
+            </div>
+            <div class="card-footer border-top-0 text-center">
+                bla bla bla
+            </div>
+        </div>
+    </div>
+    <div class="board" id="document_area">
+        <form action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="document_text_area"></label>
+                <textarea name="document_content" id="document_text_area" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-info form-control">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

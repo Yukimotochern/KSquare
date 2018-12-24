@@ -1,0 +1,37 @@
+div#all_fields {
+    max-width: 250px;
+}
+
+.scroll {
+    overflow: scroll;
+}
+
+.card-body{
+    background: #d3d3d3;
+}
+
+.card-header, .card-footer{
+    background: #d3d3d3;
+}
+
+.boards {
+    display: flex;
+    padding-left: 60px;
+    padding-right: 60px;
+    align-items: stretch;
+}
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card {
+    width: 300px;
+}
+
+
+#document_area {
+    flex: 1;
+}
+

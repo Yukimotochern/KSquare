@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     'knowledge',
     'users',
+    'tagging',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -179,3 +180,16 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'yukimoto.chern@gmail.com'
 # Application Key
 EMAIL_HOST_PASSWORD = 'a130153113'
+
+
+ACCOUNT_FORMS = {
+    'login': 'users.forms.CustomLoginForm',
+    'signup': 'allauth.account.forms.SignupForm',
+    'add_email': 'allauth.account.forms.AddEmailForm',
+    'change_password': 'allauth.account.forms.ChangePasswordForm',
+    'set_password': 'allauth.account.forms.SetPasswordForm',
+    'reset_password': 'allauth.account.forms.ResetPasswordForm',
+    'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+}
+

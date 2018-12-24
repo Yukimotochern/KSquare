@@ -1,7 +1,3 @@
-html > body {
-    background-color: #eeeeee;
-}
-
 div.card-header > div.dropdown > div.dropdown-menu {
     min-width: 100px;
     max-width: 100px;

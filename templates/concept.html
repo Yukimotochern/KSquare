@@ -1,72 +1,56 @@
 {% extends 'personal/base_personal.html' %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h2 class="display-4">Here's Your Concepts</h2>
-        <br>
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" name="link_filtering_terms">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">Go</button>
-                </div>
+<div class="container">
+    <h2 class="display-4">Here's Your Concepts</h2>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" name="link_filtering_terms">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-success">Go</button>
             </div>
-        </form>
-        <!--{% if error_message %} <p><strong>{{error_message_concept}}</strong></p> {% endif %}-->
-        <ul class="list-group">
-            <!--# New Concept-->
-            <li class="list-group-item">
-                <form action="{% url 'create_concept' %}" method="post">
-                    {% csrf_token %}
-                    <div class="form-group list-group-heading pt-2">
-                        <input class="form-control h3" name="newtitle" type="text" placeholder="概念標題">
-                        <small id="conceptheadinghelp" class="form-text text-muted">At most 30 charaters. LaTeX can be included</small>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="newcontent" rows="5" class="list-goup-item-text form-control p" placeholder="概念細節，輸入看看\[\sin\]"></textarea>
-                    </div>
-                    <div class="form-group d-flex justify-content-end">
-                        <input class="btn btn-success" type="submit" value="新增概念">
-                    </div>
-                </form>
-            </li>
-            {% if concept %}
-                {% for co in concept %}
-                    {% if edit_id %}
-                        {% if edit_id == co.id|slugify %}
-                            <!--# Edit Concept-->
-                            <li class="list-group-item">
-                                <form action="{% url 'edit_concept_save' %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="toedit" value="{{co.id}}">
-                                    <div class="form-group list-group-heading pt-2">
-                                        <input name="editedtitle" class="form-control h3" type="text" value="{{co.title}}">
-                                        <small id="concepteditinghelp" class="form-text text-muted">At most 30 charaters. LaTeX can be included</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="editedcontent" rows="5" class="list-goup-item-text form-control p">{{co.content}}</textarea>
-                                    </div>
-                                    <div class="form-group d-flex justify-content-end">
-                                        <input class="btn btn-success" type="submit" value="儲存修改">
-                                    </div>
-                                </form>
-                            </li>
-                        {% else %}
-                            <!--# Display Concept-->
-                            <li class="list-group-item">
-                                <div class="list-group-heading justify-content-between d-flex pt-2">
-                                    <h3 class="d-inline">{{co.title}}</h3>
-                                    <form method="post" class="d-inline">
-                                        {% csrf_token %}
-                                        <button class="btn btn-link" type="submit" value="{{co.id}}" formaction="{% url 'edit_concept' %}" name="edit_id"><i class="fas fa-pen"></i></button>
-                                        <button class="btn btn-link" type="submit" value="{{co.id}}" formaction="{% url 'delete_concept' %}" name="delete_id"><i class="far fa-trash-alt"></i></button>
-                                    </form>
+        </div>
+    </form>
+    <!--{% if error_message %} <p><strong>{{error_message_concept}}</strong></p> {% endif %}-->
+    <ul class="list-group">
+        <!--# New Concept-->
+        <li class="list-group-item">
+            <form action="{% url 'create_concept' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group list-group-heading pt-2">
+                    <input class="form-control h3" name="newtitle" type="text" placeholder="概念標題">
+                    <small id="conceptheadinghelp" class="form-text text-muted">At most 30 charaters. LaTeX can be included</small>
+                </div>
+                <div class="form-group">
+                    <textarea name="newcontent" rows="5" class="list-goup-item-text form-control p" placeholder="概念細節，輸入看看\[\sin\]"></textarea>
+                </div>
+                <div class="form-group d-flex justify-content-end">
+                    <input class="btn btn-success" type="submit" value="新增概念">
+                </div>
+            </form>
+        </li>
+        {% if concept %}
+            {% for co in concept %}
+                {% if edit_id %}
+                    {% if edit_id == co.id|slugify %}
+                        <!--# Edit Concept-->
+                        <li class="list-group-item">
+                            <form action="{% url 'edit_concept_save' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="toedit" value="{{co.id}}">
+                                <div class="form-group list-group-heading pt-2">
+                                    <input name="editedtitle" class="form-control h3" type="text" value="{{co.title}}">
+                                    <small id="concepteditinghelp" class="form-text text-muted">At most 30 charaters. LaTeX can be included</small>
                                 </div>
-                                <hr>
-                                <p class="list-group-item-text">{{co.content|linebreaks}}</p>
-                            </li>
-                        {% endif %}
+                                <div class="form-group">
+                                    <textarea name="editedcontent" rows="5" class="list-goup-item-text form-control p">{{co.content}}</textarea>
+                                </div>
+                                <div class="form-group d-flex justify-content-end">
+                                    <input class="btn btn-success" type="submit" value="儲存修改">
+                                </div>
+                            </form>
+                        </li>
                     {% else %}
                         <!--# Display Concept-->
                         <li class="list-group-item">
@@ -82,10 +66,24 @@
                             <p class="list-group-item-text">{{co.content|linebreaks}}</p>
                         </li>
                     {% endif %}
-                {% endfor %}
-            {% endif %}
-        </ul>
-    </div>
+                {% else %}
+                    <!--# Display Concept-->
+                    <li class="list-group-item">
+                        <div class="list-group-heading justify-content-between d-flex pt-2">
+                            <h3 class="d-inline">{{co.title}}</h3>
+                            <form method="post" class="d-inline">
+                                {% csrf_token %}
+                                <button class="btn btn-link" type="submit" value="{{co.id}}" formaction="{% url 'edit_concept' %}" name="edit_id"><i class="fas fa-pen"></i></button>
+                                <button class="btn btn-link" type="submit" value="{{co.id}}" formaction="{% url 'delete_concept' %}" name="delete_id"><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </div>
+                        <hr>
+                        <p class="list-group-item-text">{{co.content|linebreaks}}</p>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </ul>
 </div>
 
 {% endblock %}

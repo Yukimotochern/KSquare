@@ -5,44 +5,48 @@
     </div>
 
     <ul class="list-unstyled components py-0">
-        <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <li>
+            <a href="#">Dash Board</a>
+        </li>
+        <li>
+            <a href="{% url 'fields'%}">Create</a>
+        </li>
+        <li>
+            <a href="#fieldSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                Learn
+            </a>
+            <ul class="collapse list-unstyled" id="fieldSubmenu">
+                <li>
+                    <a href="#">Path</a>
+                </li>
+                <li>
+                    <a href="#">Wander</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 Fields
             </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li>
-                    <a href="#">Home 1</a>
-                </li>
-                <li>
-                    <a href="#">Home 2</a>
-                </li>
-                <li>
-                    <a href="#">Home 3</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">About</a>
-        </li>
-        <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+
             <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li>
-                    <a href="#">Page 1</a>
+                <li class="active">
+                    <a href="#" >All</a>
                 </li>
                 <li>
-                    <a href="#">Page 2</a>
+                    <a href="#">Field 1</a>
                 </li>
                 <li>
-                    <a href="#">Page 3</a>
+                    <a href="#">Field 2</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="#">Portfolio</a>
+            <a href="#">Subscribe</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="#">Favorites</a>
         </li>
     </ul>
 

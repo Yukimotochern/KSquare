@@ -35,6 +35,11 @@
 
         <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
+            {{ form.non_field_errors }}
+            <!--<div class="form-group">-->
+                <!--<label for="username">帳號：</label>-->
+                <!--<input type="text" class="form-control" id="username" autofocus="autofocus" name="login">-->
+            <!--</div>-->
           {{ form.as_p }}
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

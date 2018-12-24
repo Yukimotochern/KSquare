@@ -48,12 +48,11 @@ div.card > div.scroll-box {
 }
 
 #main_back_learn_view {
-    padding: 50px;
+    padding: 0px;
 
 }
 
 body {
-    background-color: #eeeeee;
 }
 
 div.card-header > div.dropdown > div.dropdown-menu {
