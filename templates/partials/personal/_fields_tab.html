@@ -1,0 +1,25 @@
+<div class="container-fluid px-5 mt-4 mb-0">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a
+                {% if 'fields' in request.path %}
+                    class="nav-link active"
+                {% else %}
+                    class="nav-link"
+                {% endif %}
+            href="{% url 'fields'%}">Fields</a>
+        </li>
+        <li class="nav-item">
+            <a
+            {% if 'concepts' in request.path %}
+                    class="nav-link active"
+                {% else %}
+                    class="nav-link"
+                {% endif %}
+            href="{% url 'concepts' %}">Concepts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Relations</a>
+        </li>
+    </ul>
+</div>

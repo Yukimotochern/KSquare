@@ -1,0 +1,22 @@
+body, .jumbotron  {
+    background-color: #eee;
+}
+
+
+.card {
+    background-color: #669999;
+    color: white;
+    width: 374px;
+}
+
+.form-group.row button {
+    min-width: 100px;
+}
+
+.form-group.row > label, .form-group.row > input {
+    font-size: large;
+}
+
+#forget{
+    color: white;
+}

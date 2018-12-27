@@ -13,19 +13,19 @@ from knowledge.treeview import TreeViewModel, positioning
 
 def concept_view(request):
     concept = Concept.objects.all().order_by('id').reverse()
-    return render(request, 'concept.html', locals())
+    return render(request, 'concepts.html', locals())
 
 
 def create_concept(request):
     dd = Concept.objects.create(title=request.POST["newtitle"], content=request.POST["newcontent"])
     concept = Concept.objects.all().order_by('id').reverse()
-    return render(request, 'concept.html', locals())
+    return render(request, 'concepts.html', locals())
 
 
 def edit_concept(request):
     edit_id = request.POST["edit_id"]
     concept = Concept.objects.all().order_by('id').reverse()
-    return render(request, 'concept.html', locals())
+    return render(request, 'concepts.html', locals())
 
 
 def edit_concept_save(request):
@@ -37,7 +37,7 @@ def edit_concept_save(request):
     except:
         pass
     concept = Concept.objects.all().order_by('id').reverse()
-    return render(request, 'concept.html', locals())
+    return render(request, 'concepts.html', locals())
 
 
 def delete_concept(request):
@@ -47,7 +47,7 @@ def delete_concept(request):
     except:
         pass
     concept = Concept.objects.all().order_by('id').reverse()
-    return render(request, 'concept.html', locals())
+    return render(request, 'concepts.html', locals())
 
 
 #  Relation Part

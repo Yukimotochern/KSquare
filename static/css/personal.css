@@ -201,5 +201,10 @@ a.article:hover {
 }
 
 
+#user-icon {
+    height: 1.5em;
+    border-radius: 20px;
+}
+
 
 

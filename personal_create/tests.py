@@ -10,13 +10,13 @@ class TestParser(TestCase):
     #     a = TxtParser(text)
     #     a.parse()
     #     self.assertTrue(True)
-    #
+    # #
     # def test_identify_pattern1(self):
     #     text = '天空：\n藍藍的天空'
     #     a = TxtParser(text)
     #     a.parse()
     #     self.assertTrue(True)
-    #
+    # #
     # def test_identify_pattern2(self):
     #     text = '天空：\n\t藍藍的天空'
     #     a = TxtParser(text)
@@ -28,7 +28,7 @@ class TestParser(TestCase):
     #     a = TxtParser(text)
     #     a.parse()
     #     self.assertTrue(True)
-    #
+
     # def test_identify_pattern4(self):
     #     text = '天空：＃我 ＠同義：蒼芎\n\t藍藍的天空'
     #     a = TxtParser(text)

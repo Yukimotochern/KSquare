@@ -36,24 +36,48 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item mr-2">
                         <a class="nav-link" href="{% url 'fields' %}">
-                            <i class="fab fa-squarespace"></i>
+                            {% if user.socialaccount_set.all.0.get_avatar_url %}
+                                <i>
+                                    <img id="user-icon" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
+                                </i>
+                            {% else %}
+                                <i class="fab fa-squarespace"></i>
+                            {% endif %}
                             {{user.username}}'s Square
                         </a>
                     </li>
-                    <li class="nav-item mr-2">
+                    <li
+                    {% if 'logout' in request.path %}
+                        class="nav-item mr-2 active"
+                    {% else %}
+                        class="nav-item mr-2"
+                    {% endif %}
+                    >
                         <a class="nav-link" href="{% url 'account_logout' %}">
                             <i class="fas fa-sign-out-alt"></i>
                             Sign out
                         </a>
                     </li>
                 {% else %}
-                    <li class="nav-item mr-2">
+                    <li
+                    {% if 'signup' in request.path %}
+                        class="nav-item mr-2 active"
+                    {% else %}
+                        class="nav-item mr-2"
+                    {% endif %}
+                    >
                         <a class="nav-link" href="{% url 'account_signup' %}">
                             <i class="fas fa-user-plus"></i>
                             Register
                         </a>
                     </li>
-                    <li class="nav-item mr-2">
+                    <li
+                    {% if 'login' in request.path %}
+                        class="nav-item mr-2 active"
+                    {% else %}
+                        class="nav-item mr-2"
+                    {% endif %}
+                    >
                         <a class="nav-link" href="{% url 'account_login' %}">
                             <i class="fas fa-sign-in-alt"></i>
                             Login

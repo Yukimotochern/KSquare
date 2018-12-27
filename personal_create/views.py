@@ -6,3 +6,19 @@ from django.shortcuts import render
 def fields(request):
     return render(request, 'personal/create/fields.html', locals())
 
+
+def concepts(request):
+    return render(request, 'personal/create/concepts.html', locals())
+
+
+
+
+
+
+
+
+
+
+
+
+

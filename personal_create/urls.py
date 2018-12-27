@@ -5,5 +5,6 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('fields/', views.fields, name="fields"),
+    path('concepts/', views.concepts, name="concepts"),
 
 ]

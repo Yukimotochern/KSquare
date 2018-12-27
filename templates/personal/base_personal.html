@@ -28,56 +28,53 @@
                             <i class="fas fa-bars"></i>
                             <span></span>
                         </button>
-                        <ul class="navbar-nav ml-auto">
-                            <!--<li class="nav-item">-->
-                                <!--<a href="{% url 'all_concept' %}" class="nav-link">Learn</a>-->
-                            <!--</li>-->
-                            <!--<li class="nav-item">-->
-                                <!--<a href="{% url 'concept_manage'%}" class="nav-link">Create</a>-->
-                            <!--</li>-->
-                            <!--<li class="nav-item">-->
-                                <!--<a href="{% url 'concept_manage'%}" class="nav-link">Concepts</a>-->
-                            <!--</li>-->
-                            <!--<li class="nav-item">-->
-                                <!--<a href="{% url 'relation_manage' %}" class="nav-link">Relations</a>-->
-                            <!--</li>-->
-                            <!--<li class="nav-item">-->
-                                <!--<a href="{% url 'relation_manage' %}" class="nav-link">Links</a>-->
-                            <!--</li>-->
-                            <!--<li class="nav-item mr-2">-->
-                                <!--<a class="nav-link" href="{% url 'home' %}">-->
-                                    <!--<i class="fab fa-squarespace"></i>-->
-                                    <!--KSquare-->
-                                <!--</a>-->
-                            <!--</li>-->
-                            {% if user.is_authenticated %}
-                                <!--<li class="nav-item mr-2">-->
-                                    <!--<a class="nav-link" href="{% url 'fields' %}">-->
-                                        <!--<i class="fab fa-squarespace"></i>-->
-                                        <!--{{user.username}}'s Square-->
-                                    <!--</a>-->
-                                <!--</li>-->
-                                <li class="nav-item mr-2">
-                                    <a class="nav-link" href="{% url 'account_logout' %}">
-                                        <i class="fas fa-sign-out-alt"></i>
-                                        Sign out
-                                    </a>
-                                </li>
-                            {% else %}
-                                <li class="nav-item mr-2">
-                                    <a class="nav-link" href="{% url 'account_signup' %}">
-                                        <i class="fas fa-user-plus"></i>
-                                        Register
-                                    </a>
-                                </li>
-                                <li class="nav-item mr-2">
-                                    <a class="nav-link" href="{% url 'account_login' %}">
-                                        <i class="fas fa-sign-in-alt"></i>
-                                        Login
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <ul class="navbar-nav ml-auto">
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item mr-1 active">
+                                        <a class="nav-link" href="{% url 'fields' %}">
+                                            {% if user.socialaccount_set.all.0.get_avatar_url %}
+                                                <i>
+                                                    <img id="user-icon" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
+                                                </i>
+                                            {% else %}
+                                                <i class="fab fa-squarespace"></i>
+                                            {% endif %}
+                                            ^2
+                                        </a>
+                                    </li>
+                                    <li class="nav-item mr-1">
+                                        <a class="nav-link" href="{% url 'home' %}">
+                                            <i class="fab fa-squarespace"></i>
+                                            K^2
+                                        </a>
+                                    </li>
+                                    <li class="nav-item mr-4">
+                                        <a class="nav-link" href="{% url 'account_logout' %}">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            Sign out
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item mr-2">
+                                        <a class="nav-link" href="{% url 'account_signup' %}">
+                                            <i class="fas fa-user-plus"></i>
+                                            Register
+                                        </a>
+                                    </li>
+                                    <li class="nav-item mr-2">
+                                        <a class="nav-link" href="{% url 'account_login' %}">
+                                            <i class="fas fa-sign-in-alt"></i>
+                                            Login
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
                     </nav>
                     {% block content %}
                     {% endblock %}

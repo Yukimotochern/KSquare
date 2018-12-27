@@ -1,24 +1,47 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load staticfiles %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href = "{% static '/css/allauth/auth.css' %}"/>
 <div class="jumbotron">
     <div class="container">
-        <h1>{% trans "Sign Up" %}</h1>
+        <h1 class="text-center display-4 mt-5">註冊</h1>
+        <p class="text-muted text-center">{% blocktrans %}已經註冊過了嗎? 直接 <a href="{{ login_url }}">登入</a>呦.{% endblocktrans %}</p>
+        <div class="row">
+            <form class="signup col-xl-4 col-lg-5 mx-auto" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-group row">
+                    {{form.email.errors}}
+                    <label class="col-xl-4 col-form-label" for="id_login">電子郵件:</label>
+                    <input type="text" class="form-control col-xl-8" id="id_login" autofocus="autofocus" name="email">
+                </div>
+                <div class="form-group row">
+                    {{form.password1.errors}}
+                    <label class="col-xl-4 col-form-label" for="id_login">密碼:</label>
+                    <input type="password" class="form-control col-xl-8" id="password1" name="password1">
+                </div>
+                <div class="form-group row">
+                    {{form.password2.errors}}
+                    <label class="col-xl-4 col-form-label" for="id_login">確認密碼:</label>
+                    <input type="password" class="form-control col-xl-8" id="password2" name="password2">
+                </div>
+                <!--{{ form.as_p }}-->
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="form-group row">
+                    <div class="col-xl-4 offset-xl-4">
+                        <button class="btn btn-info mx-auto" type="submit">{% trans "註冊" %}&nbsp; &raquo;</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
-            <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-        </form>
     </div>
 </div>
 

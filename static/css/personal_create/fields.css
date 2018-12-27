@@ -7,11 +7,18 @@ div#all_fields {
 }
 
 .card-body{
-    background: #d3d3d3;
+    background: #DFE3E6;
 }
 
 .card-header, .card-footer{
-    background: #d3d3d3;
+    background: #DFE3E6;
+    color:  #233A4C;
+}
+
+a.list-group-item.active  {
+    background-color: #566c73;
+    outline: none;
+    border: 0px;
 }
 
 .boards {
@@ -31,7 +38,32 @@ div#all_fields {
 }
 
 
+
 #document_area {
     flex: 1;
+}
+
+/*  Concepts    */
+#all_concepts.card {
+    width: 450px;
+}
+
+
+.plain  {
+    outline: none;
+}
+
+.concept-summary {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 1.2em;     /* fallback */
+   max-height: 2.5em;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.card-footer.btn {
+    border: none;
 }
 
