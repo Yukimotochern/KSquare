@@ -45,12 +45,12 @@ a.list-group-item.active  {
 
 /*  Concepts    */
 #all_concepts.card {
-    width: 450px;
+    width: 380px;
 }
 
 
 .plain  {
-    outline: none;
+    outline: 0;
 }
 
 .concept-summary {
@@ -67,3 +67,24 @@ a.list-group-item.active  {
     border: none;
 }
 
+div.my-1.pb-2 > textarea.newConceptTitle.form-control {
+
+    resize : none;
+    outline : none;
+}
+
+div.my-1.pb-2 > textarea#newConceptTitle.newConceptTitle.form-control:focus {
+    resize : none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #D1D5D8;
+}
+
+#addConceptCancel {
+    color: #A9A9A9;
+}
+
+#addConceptCancel:hover {
+    color: #233A4C;
+}

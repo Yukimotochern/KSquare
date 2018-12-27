@@ -4,7 +4,7 @@ from django.db.models.signals import post_delete
 from django.contrib.auth.models import User
 from tagging.registry import register
 import knowledge
-import time
+from datetime import datetime
 from users.models import CustomUser
 # Create your models here.
 
@@ -14,8 +14,8 @@ class Concept(models.Model):
     _title = models.CharField(max_length=30)
     summary = models.CharField(max_length=150, null=True)
     content = models.TextField(null=True)
-    create_time = models.TimeField(null=True)
-    modify_time = models.TimeField(null=True)
+    create_time = models.DateTimeField(null=True)
+    modify_time = models.DateTimeField(null=True)
     owner = models.ForeignKey('users.CustomUser', null=True, on_delete=models.CASCADE, related_name='created_concepts')
     editors = models.ManyToManyField('users.CustomUser', related_name='editable_concepts')
     viewers = models.ManyToManyField('users.CustomUser', related_name='viewable_concepts')
