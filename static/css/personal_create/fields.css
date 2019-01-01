@@ -1,6 +1,16 @@
 div#all_fields {
-    max-width: 250px;
+    background-color: inherit;
 }
+
+.list-group{
+    background-color: inherit;
+}
+
+.list-group-item {
+    background: inherit;
+    border: 0px;
+}
+
 
 .scroll {
     overflow: scroll;
@@ -16,9 +26,18 @@ div#all_fields {
 }
 
 a.list-group-item.active  {
-    background-color: #566c73;
+    background-color: #F5FAFE;
     outline: none;
     border: 0px;
+    border-left: 5px solid #8197C1;
+}
+
+a.list-group-item:not(.active) {
+    border-left: 5px solid transparent;
+}
+
+a.list-group-item .mask h5 {
+    color: #4B698A;
 }
 
 .boards {
@@ -26,6 +45,7 @@ a.list-group-item.active  {
     padding-left: 60px;
     padding-right: 60px;
     align-items: stretch;
+    flex: 1;
 }
 .board {
     display: flex;
@@ -44,10 +64,40 @@ a.list-group-item.active  {
 }
 
 /*  Concepts    */
-#all_concepts.card {
-    width: 380px;
+#concepts.board {
+    min-width: 300px;
 }
 
+.board.concept-editor {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    max-width: 500px;
+    border-left: 1px solid #E4E4E4;
+    border-right: 1px solid #E4E4E4;
+}
+
+.board.concept-editor .inputConceptTitle{
+    border: 0;
+    background-color: inherit;
+    color: #4B698A;
+    line-height: 1em;
+}
+
+.board.concept-editor .inputConceptTag{
+    border: 0;
+    background-color: inherit;
+}
+
+.board.concept-editor .textareaConceptSummary{
+    border: 0;
+    overflow-y : auto; /* IE */
+    resize : none;
+    background-color: inherit;
+    height: auto;
+    flex: 1;
+
+}
 
 .plain  {
     outline: 0;
@@ -88,3 +138,40 @@ div.my-1.pb-2 > textarea#newConceptTitle.newConceptTitle.form-control:focus {
 #addConceptCancel:hover {
     color: #233A4C;
 }
+
+
+.mask {
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.btnNewConcept {
+    color: #233A4C;
+}
+
+#btnSearchConcepts:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+.formSearch {
+    border-bottom: 1px solid #E4E4E4;
+}
+
+#concepts.board {
+    border-left: 1px solid #E4E4E4;
+}
+
+small.owner {
+    color: #9C9C9C;
+}
+
+small.time {
+    color: #9C9C9C;
+}
+
+li.nav-item a.nav-link.active {
+    background-color: inherit;
+    border-bottom-color: #fafafa;
+}
+

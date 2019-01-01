@@ -6,34 +6,54 @@
 {% include "partials/personal/_fields_tab.html" %}
 <div class="boards">
     <div class="board">
-        <div class="card mx-2 mt-4 mb-4" id="all_fields">
-            <div class="card-header border-bottom-0 text-center py-2">
-                Knowlege Fields
+        <div class="card mx-4 mt-3 mb-3" id="all_concepts">
+            <div class="card-header border-bottom-0 text-center p-2 h3">
+                Concepts
             </div>
             <div class="card-body scroll py-0 px-2">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                {% for concept in all_concepts %}
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <input type="hidden" value="{{concept.id}}">
+                        <h5 class="mb-1">{% if concept.title%}{{concept.title}}{% endif %}</h5>
+                        <p class="mb-1 concept-summary">{% if concept.summary %}{{concept.summary}}{% else %}保持冷靜，寫點東西{% endif %}</p>
+                        <div class="d-flex justify-content-between">
+                            {% if concept.modify_time %}
+                                <small>{{concept.modify_time}}</small>
+                                <small>edited by {{concept.owner}}</small>
+                            {% else %}
+                                <small>{{concept.create_time}}</small>
+                                <small>created by {{concept.owner}}</small>
+                            {% endif %}
+
+                        </div>
+                    </a>
+                {% endfor %}
                 </div>
+
             </div>
-            <div class="card-footer border-top-0 text-center">
-                bla bla bla
-            </div>
+            <a onclick="" class="card-footer border-top-0 p-2 btn btn-light text-muted"><i class="fas fa-plus mr-1"></i>
+                {% if concepts %}新增另一個概念{% else %}新增概念{% endif %}
+            </a>
+
         </div>
+        <!--ToCopy-->
+        <div class="card-footer border-top-0 d-none px-2" id="formAddConcept">
+            <div class="my-1 pb-2">
+                <textarea placeholder="為這個概念取一個名字" class="form-control newConceptTitle" name="NewConceptTitle" id="newConceptTitle" rows="3"></textarea>
+            </div>
+            <button class="btn btn-success">新增概念</button>
+            <button id="addConceptCancel" class="btn btn-link"><i class="fas fa-times fa-lg"></i></button>
+        </div>
+        <a href="#" class="list-group-item list-group-item-action d-none">
+            <input type="hidden" value="">
+            <h5 class="mb-1"></h5>
+            <p class="mb-1 concept-summary">保持冷靜，寫點東西</p>
+            <div class="d-flex justify-content-between">
+                <small class="create_time"></small>
+                <small class="created_by"></small>
+            </div>
+        </a>
     </div>
     <div class="board">
         <div class="card mx-2 mt-4 mb-4">
@@ -66,4 +86,9 @@
 
 
 
+{% endblock %}
+
+
+{% block js %}
+<script src="{% static '/js/create/fields.js'%}"></script>
 {% endblock %}
