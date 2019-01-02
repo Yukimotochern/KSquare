@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'outter/css/tag_view.css' %}">
+<div class="container">
+    <div class="row hasmargin">
+        <div class="col-9" style="width: 100%;">
+            <div class="row">
+                <div class="card text-white bg-dark main_concept" style="width: 100%;">
+                      <div class="card-header">
+                          {{ tag.title }}
+                          <div class="concept_btn">
+                              <button id="view_reverse"><i class="fas fa-toggle-off" style="color:white; margin-right: 5px;"></i>關閉</button>
+                              <button id="edit_btn"><i class="fas fa-edit"></i>編輯</button>
+                              <button id="collect_btn"><i class="fas fa-star"></i>收藏</button>
+                              <button id="view_btn"><i class="far fa-eye-slash"></i>視圖</button>
+                          </div>
+                      </div>
+                      <div class="card-body main_concept_body" style="overflow: hidden;">
+                          <div class="flip-card-inner">
+                              <p class="flip-card-front">{{ tag.content|truncatechars:700 }}</p>
+                              <p class="flip-card-back">{{ tag.content|truncatechars:700 }}</p>
+                          </div>
+                      </div>
+                </div>
+            </div>
+             <div class="row ">
+                   <div class="scrollspy-example" data-spy="scroll" data-target="#spy" style="width: 100%;" id="linked_card">
+                        <div class="panel panel-default">
+                            <div class="card text-white bg-info link_concepts">
+                              <div class="card-header">
+                                  Header
+                                  <span id="expand"><i class="fas fa-expand-arrows-alt"></i></span>
+                              </div>
+                              <div class="card-body scrollspy-example" data-spy="scroll" data-target="#spy" >
+                                    <div id="scroll1">
+                                        <span class="button_move button_move_right"><i class="fas fa-caret-square-right"></i></span>
+                                        <span class="button_move button_move_left"><i class="fas fa-caret-square-left"></i></span>
+                                        <div class="link_concepts_cards">
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-header" style="height: 38px;">Card title</h5>
+                                                <p class="card-body">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="scroll2">
+                                        <div class="link_concepts_cards">
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="scroll3">
+                                        <div class="link_concepts_cards">
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="scroll4">
+                                        <div class="link_concepts_cards">
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title4</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="scroll5">
+                                        <div class="link_concepts_cards">
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title4</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default text-success" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                            <div class="card link_cards card-default" style="margin-bottom: 15px;margin-top: 15px;">
+                                                <h5 class="card-title">Card title</h5>
+                                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                              </div>
+                            </div>
+                        </div>
+
+            </div>
+         </div>
+    </div>
+         <div class="col-3 card bg-light" id="spy" style="padding: 0 ">
+            <div class="card-header">相关链接</div>
+             <button class="btn btn btn-light" data-toggle="modal" data-target="#myModal2"><i class="fas fa-plus-circle"></i></button>
+            <div class="card-body">
+                <div class="nav nav-pills flex-column" id="link_name_menu">
+                    <a class="nav-item">
+                        <a class="nav-link active" href="#scroll1">First Section<button class="add_btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-circle"></i></button></a>
+                    </a>
+                    <a class="nav-item"><a class="nav-link" href="#scroll2">Second Section</a></a>
+                    <a class="nav-item"><a class="nav-link" href="#scroll3">Third Section</a></a>
+                    <a class="nav-item"><a class="nav-link" href="#scroll4">Fourth Section</a></a>
+                    <a class="nav-item">
+                        <a class="nav-link" href="#scroll5" id="not_avtive">Fourth Section</a>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg bg-primary">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">添加概念</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="form-group">
+                      <label for="concept_name">name:</label>
+                      <input type="email" class="form-control" id="email" placeholder="Enter the concept name" name="concept_name">
+                    </div>
+                    <div class="form-group">
+                      <label for="concept_content">content:</label>
+                        <textarea class="form-control" id="pwd" placeholder="Enter the concept content" name="concept_content" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+ </div>
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog modal-lg bg-primary">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">添加链接</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="form-group">
+                      <label for="concept_name">name:</label>
+                      <input type="email" class="form-control" id="email" placeholder="Enter the concept name" name="concept_name">
+                    </div>
+                    <div class="form-group">
+                      <label for="concept_content">content:</label>
+                        <textarea class="form-control" id="pwd" placeholder="Enter the concept content" name="concept_content" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+ </div>
+
+{% endblock %}
+{% block js %}
+<script src="{% static 'outter/js/tag_view.js'%}"></script>
+{% endblock %}
+

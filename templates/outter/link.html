@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("{% static 'img/bg.jpg' %}") no-repeat;
+            background-size: 100%;
+        }
+        .concept_name{
+            height: 650px;
+            width: 20%;
+            float: left;
+        }
+        .concept_name h2{
+            margin-top: 250px;
+            margin-left: 25%;
+            height: 200px;
+            width: 200px;
+            line-height: 200px;
+            padding-left: 45px;
+            background:url("{% static 'img/button5.png' %}") no-repeat;
+            background-size: 200px 200px;
+            color:white;
+            font-weight: bold;
+            font-family: "仿宋";
+        }
+        .link_name{
+            height: 650px;
+            width: 20%;
+            float: left;
+            overflow: scroll;
+        }
+        .link_name::-webkit-scrollbar {display:none}
+        .link_name ul li{
+            line-height: 100px;
+            height: 100px;
+            list-style: none;
+            background: url("{% static 'img/submit.png' %}") 15px no-repeat;
+            background-size: 100% 100%;
+            font-weight: bold;
+            font-family: "仿宋";
+            font-size: 25px;
+            color:white;
+            padding-left: -10px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .link_name ul li:hover{
+            transform: scale(1.1);
+        }
+        .tag_box{
+            width: 60%;
+            height: 650px;
+            scroll-behavior: smooth;
+            overflow: scroll;
+        }
+        .tag_box::-webkit-scrollbar {display:none}
+        .tag_box a{
+            text-decoration: none;
+            color:black;
+        }
+        .tag_box .tag{
+            height: 200px;
+            width: 300px;
+            float: left;
+            border: 1px solid silver;
+            display: none;
+            margin: 10px;
+            box-shadow:2px 2px 5px rgba(0,0,0,0.27),0 0 20px  rgba(0,0,0,.1) inset;
+            font-family: "仿宋";
+            background: url("{% static 'img/paper_fibers.png' %}");
+            background-size: 100%;
+        }
+        .tag_box .tag h4{
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            font-size: 25px;
+            padding-left: 10px;
+        }
+        .tag_box .tag p{
+            padding: 10px;
+            width: 100%;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="concept_name">
+    <h2>范仲淹</h2>
+</div>
+<div class="link_name">
+    <ul class="links">
+        <li id="link_id_1">同义字</li>
+        <li id="link_id_2">父亲</li>
+        <li id="link_id_3">儿子</li>
+        <li id="link_id_4">著作</li>
+        <li id="link_id_5">反义词</li>
+        <li id="link_id_6">同学</li>
+        <li id="link_id_7">对手</li>
+        <li id="link_id_8">上级</li>
+        <li id="link_id_9">事迹</li>
+    </ul>
+</div>
+<div class="tag_box">
+    <a href="#">
+        <div class="tag" id="box_link_id_1" style="display: block">
+            <h4>同义字</h4>
+            <p>XXXXXX</p>
+        </div>
+    </a>
+    <div class="tag" id="box_link_id_2">
+        <h4>父亲</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_3">
+        <h4>儿子</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_4">
+        <h4>著作</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_5">
+        <h4>反义词</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_6">
+        <h4>同学</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_7">
+        <h4>对手</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_8">
+        <h4>上级</h4>
+        <p>XXXXXX</p>
+    </div>
+    <div class="tag" id="box_link_id_9">
+        <h4>事迹</h4>
+        <p>XXXXXX</p>
+    </div>
+</div>
+<script>
+    var links=document.getElementsByClassName("links")[0].children
+    var current= document.getElementById("box_link_id_1")
+    for(var i=0;i<links.length;i++){
+        links[i].onclick=function () {
+            var box=document.getElementById("box_"+this.id)
+            current.style.display="none"
+            box.style.display="block"
+            current=box
+        }
+    }
+</script>
+</body>
+</html>

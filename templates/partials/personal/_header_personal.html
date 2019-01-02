@@ -1,4 +1,8 @@
-<nav id="sidebar">
+<nav id="sidebar"
+{% if tab == "0" %}
+class='active'
+{% endif %}
+>
     <div class="sidebar-header">
         <h3><i class="fab fa-squarespace mx-2 py-0" ></i>&nbsp;KSquare</h3>
         <h4 class="text-center">{{user.username}}'s Place</h4>

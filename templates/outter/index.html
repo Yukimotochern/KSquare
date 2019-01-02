@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+	<link rel="stylesheet" href="{% static 'outter/css/index.css' %}">
+	<section class="section-wrap">
+		<div class="section section-1">
+			<section class="panel" id="panel1">
+				<div id="box1" class="box">
+					<div class="frist_left">
+						<!--<h1 class="white">Knowledge Square</h1>-->
+						<div class="instruct">
+							<p>Welcome to the Knowledge Square!</p>
+							<p>In here,you can create, learn, and share! </p>
+							<p>Your personal knowledge bank and Public knowledge square.</p>
+						</div>
+						<a href="#"><button id="go_start" >Get Start! <i class="fas fa-arrow-right white"></i></button></a>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="section section-2">
+			<section class="panel panelColor" id="panel2">
+				<div id="box2" class="box">
+					<div id="box_adv_1" class="adv" style="display: block">
+						<img src="{% static 'outter/img/adv1.png' %}" alt="" id="adv1_img" class="adv_img">
+						<div class="adv_content" id="adv1_content">
+							<h4>知識更加標簽化</h4>
+							<p>Knowledge Square提供用一個個的標簽來代表某個知識，使每一個概念更加清晰簡約，同時具有針對性。</p>
+						</div>
+						<img src="https://shared-https.ydstatic.com/market/ynote-website/ic-cone.svg" alt="" id="doction_1">
+					</div>
+					<div id="box_adv_2" class="adv">
+						<div id="adv2_img">
+							<img src="{% static 'outter/img/smallTag1.png' %}" alt="" class="smallTag mouseover-display">
+							<span class="smallTag_span mouseover-display" style="top: 55px;left: 175px;">同義詞</span>
+							<img src="{% static 'outter/img/smallTag2.png' %}" alt="" class="smallTag mouseover-display" style="top: 0;right: 0;animation: top-right 0.7s ease-in-out">
+							<span class="smallTag_span mouseover-display" style="top: 135px;right: 50px;">反義詞</span>
+							<img src="{% static 'outter/img/smallTag3.png' %}" alt="" class="smallTag mouseover-display" style="bottom: 0;right: 0;animation: bottom-right 0.7s ease-in-out">
+							<span class="smallTag_span mouseover-display" style="bottom: 55px;right: 175px;">同根詞</span>
+							<img src="{% static 'outter/img/smallTag4.png' %}" alt="" class="smallTag mouseover-display" style="bottom: 0;left: 0;animation: bottom-left 0.7s ease-in-out">
+							<span class="smallTag_span mouseover-display" style="bottom: 135px;left: 25px;">相關短語</span>
+							<div class="adv2_center">
+								<img src="{% static 'outter/img/adv2.png' %}" alt="" class="adv2_tag_big">
+								<div class="expend_icon" style="top: 0;left:0;"></div>
+								<div class="expend_icon" style="top: 0;right: 0;"></div>
+								<div class="expend_icon" style="bottom: 0;left: 0;"></div>
+								<div class="expend_icon" style="bottom: 0;right: 0;"></div>
+								<div class="expended_icon mouseover-display" style="top: -3px;left: -8px;transform: rotateZ(45deg);"></div>
+								<div class="expended_icon mouseover-display" style="top: -3px;right: -8px;transform: rotateZ(-45deg);"></div>
+								<div class="expended_icon mouseover-display" style="bottom: -3px;right: -6px;transform: rotateZ(45deg);"></div>
+								<div class="expended_icon mouseover-display" style="bottom: -3px;left: -5px;transform: rotateZ(125deg);"></div>
+							</div>
+						</div>
+						<div class="adv_content" id="adv2_content">
+							<h4>知識更加系統化</h4>
+							<p>您可以在一個概念下找到很多具有相同屬性的概念，構成一個概念網絡，使知識更加系統化。</p>
+						</div>
+
+					</div>
+					<div id="box_adv_3" class="adv">
+						<img src="{% static 'outter/img/adv3.png' %}" alt="" id="adv3_img" class="adv_img">
+						<div class="adv_content" id="adv3_content">
+							<h4>筆記完全共享</h4>
+							<p>在Knowledge Square，您可以瀏覽他人的閲讀筆記，您也可以分享您自己的筆記，實現筆記的完全共享</p>
+						</div>
+						<img src="https://shared-https.ydstatic.com/market/ynote-website/ic_02_cube2.svg" alt="" id="doction_2">
+					</div>
+					<div id="box_adv_4" class="adv">
+						<img src="{% static 'outter/img/adv4.png' %}" alt="" id="adv4_img" class="adv_img">
+						<img src="https://shared-https.ydstatic.com/market/ynote-website/ic-03-wave.svg" alt="" id="doction_3">
+						<div class="adv_content" id="adv4_content">
+							<h4>創建知識的討論組</h4>
+							<p>您可以針對某一個知識概念建立一個討論群組，通過與他人互動獲取與人交流的效果</p>
+						</div>
+					</div>
+					<ul id="box2_menu">
+						<li><button id="adv_1"></button></li>
+						<li><button id="adv_2"></button></li>
+						<li><button id="adv_3"></button></li>
+						<li><button id="adv_4"></button></li>
+					</ul>
+					<div id="to-right" class="box2_move">》</div>
+					<div id="to-left" class="box2_move">《</div>
+				</div>
+			</section>
+
+		</div>
+		<div class="section section-3">
+			<section class="panel" id="panel3">
+				<div id="box3" class="box">
+					<ul class="menu" id="menu">
+						<li id="menu_1">
+							<div class="menu_img" style="background-color: blue;"><i class="fas fa-search"></i></div>
+							<span>瀏覽</span>
+						</li>
+						<li id="menu_2">
+							<div class="menu_img"><i class="fas fa-plus-circle"></i></div>
+							<span>創建</span>
+						</li>
+						<li id="menu_3">
+							<div class="menu_img"><i class="fas fa-link"></i></div>
+							<span>連接</span>
+						</li>
+						<li id="menu_4">
+							<div class="menu_img"><i class="far fa-edit"></i></div>
+							<span>編輯</span>
+						</li>
+						<li id="menu_5">
+							<div class="menu_img"><i class="fas fa-users-class"></i></div>
+							<span>分級</span>
+						</li>
+						<li id="menu_6">
+							<div class="menu_img"><i class="fas fa-star"></i></div>
+							<span>收藏</span>
+						</li>
+					</ul>
+					<div id="box_menu_1" class="tag_instruct" style="display: block;opacity: 1">
+						<h4>查詢概念</h4>
+						<p>在這裏，您可以查詢自己想要的知識，您還可以通過樹形菜單來篩選您想要獲取的知識。</p>
+						<a href="#"><button>去查詢 -></button></a>
+						<div class="box_menu_right">
+							<img src="{% static 'outter/img/view.png' %}" alt="">
+						</div>
+					</div>
+					<div id="box_menu_2" class="tag_instruct">
+						<h4>創建概念</h4>
+						<p>嫌概念不夠用？想分享自己的知識？您可以還創建自己的概念，在這裏，您將是這條概念的主人</p>
+						<a href="#"><button>去創建 -></button></a>
+						<div class="box_menu_right">
+							<img src="{% static 'outter/img/create.png' %}" alt="">
+						</div>
+					</div>
+					<div id="box_menu_3" class="tag_instruct">
+						<h4>連接概念</h4>
+						<p>概念與概念之間可以進行連接，您可以建立一條概念與另一條概念的聯係，形成概念的連接體系</p>
+						<a href="#"><button>去連接 -></button></a>
+						<div class="box_menu_right">
+							<img src="{% static 'outter/img/link.png' %}" alt="">
+						</div>
+					</div>
+					<div id="box_menu_4" class="tag_instruct">
+						<h4>編輯概念</h4>
+						<p>有一些概念原作者可能創建的並不完整，您可以編輯現有的概念來使他更加完整。</p>
+						<a href="#"><button>去編輯 -></button></a>
+						<div class="box_menu_right">
+							<img src="{% static 'outter/img/view.png' %}" alt="">
+						</div>
+					</div>
+					<div id="box_menu_5" class="tag_instruct">
+						<h4>分層查看</h4>
+						<p>可能一條概念分爲不同的層次，有一些概念對大衆來説僅作爲瞭解，對專業人士需要深層研究，您可以選擇查看自己想看概念的複雜程度</p>
+						<a href="#"><button>去嘗試 -></button></a>
+						<div class="box_menu_right">
+							<img src="{% static 'outter/img/calss.png' %}" alt="">
+						</div>
+					</div>
+					<div id="box_menu_6" class="tag_instruct">
+						<h4>加入收藏</h4>
+						<p>概念沒有看完，覺得概念非常好怎麽辦？您可以將他加入您的收藏，同時每個用戶有自己的歷史記錄，不怕丟失！</p>
+						<button>去收藏 -></button>
+						<div class="box_menu_right">
+							<img src="{% static 'outter/img/create.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="section section-4">
+			<section class="panel panelColor" id="panel4">
+				<div id="box4" class="box">
+					<h3>公共與私有結合</h3>
+					<ul class="box4_menu">
+						<li id="public" class="box4_elem">
+							<div class="public_icon box4_icon">
+								<img src="{% static 'outter/img/public.png' %}" alt="" class="icon_logo">
+								<span>公有領域</span>
+								<ul class="public_img box4_img">
+									<li id="public_instruct_1_img" style="display: block"><img class="instruct_img" src="https://www.researchgate.net/profile/Pratim_Datta2/publication/228370567/figure/fig1/AS:340079504576512@1458092680018/Figure-A1-Sample-knowledge-tree-diagram_W840.jpg" alt=""></li>
+									<li id="public_instruct_2_img"><img class="instruct_img" src="{% static 'outter/img/public_img_2.png' %}" alt=""></li>
+									<li id="public_instruct_3_img"><img class="instruct_img" src="http://img.xker.com/xkerfiles/allimg/1703/1R052GL-1.jpg" alt=""></li>
+								</ul>
+							</div>
+							<ul class="public_instruct box4_instruct">
+								<li id="public_instruct_1" class="box4_instruct_li">
+									<h4>公有的知識樹平臺</h4>
+									<p>您可以直接學習現有的知識樹，公有的知識樹所有人都可以編輯和分享，沒有作者，您也可以建立概念將它設置爲公有概念</p>
+								</li>
+								<li id="public_instruct_2" class="box4_instruct_li">
+									<h4>不同歷史版本的概念</h4>
+									<p>每一個概念都有自己的知識更新歷史，您可以選擇任何版本的概念進行學習，您也可以自己編輯共有概念，編輯較好的話可以建立覆蓋當前版本的概念</p>
+								</li>
+								<li id="public_instruct_3" class="box4_instruct_li">
+									<h4>公共的筆記分享平臺</h4>
+									<p>這裏有自己公共的知識庫，也可以看見其他用戶的筆記資料，是一個完全的筆記分享平臺</p>
+								</li>
+							</ul>
+						</li>
+						<li id="private" class="box4_elem">
+							<div class="private_icon box4_icon">
+								<img src="{% static 'outter/img/private.png' %}" alt="" class="icon_logo">
+								<span>私有領域</span>
+								<ul class="private_img box4_img">
+									<!--<li id="private_instruct_1_img"><img class="instruct_img" src="https://www.researchgate.net/profile/Pratim_Datta2/publication/228370567/figure/fig1/AS:340079504576512@1458092680018/Figure-A1-Sample-knowledge-tree-diagram_W840.jpg" alt=""></li>-->
+									<!--<li id="private_instruct_2_img"><img class="instruct_img"  src="img/public_img_2.png" alt=""></li>-->
+									<!--<li id="private_instruct_3_img"><img class="instruct_img" src="http://img.xker.com/xkerfiles/allimg/1703/1R052GL-1.jpg" alt=""></li>-->
+								</ul>
+							</div>
+							<ul class="private_instruct box4_instruct">
+								<li id="private_instruct_1">
+									<h4>構建屬於自己的知識庫</h4>
+									<p>在這裏您可以盡情編輯自己的筆記，也可以收藏拷貝他人的筆記，還可以建立自己的概念，構建起屬於自己的知識庫</p>
+								</li>
+								<li id="private_instruct_2">
+									<h4>構建屬於自己的知識庫</h4>
+									<p>在這裏您可以盡情編輯自己的筆記，也可以收藏拷貝他人的筆記，還可以建立自己的概念，構建起屬於自己的知識庫</p>
+								</li>
+								<li id="private_instruct_3">
+									<h4>構建屬於自己的知識庫</h4>
+									<p>在這裏您可以盡情編輯自己的筆記，也可以收藏拷貝他人的筆記，還可以建立自己的概念，構建起屬於自己的知識庫</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</section>
+	<ul class="section-btn">
+	  <li class="on"></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	</ul>
+	<div class="arrow">&laquo;</div>
+
+{% endblock %}
+
+
+{% block js %}
+<script src="{% static 'outter/js/index.js' %}"></script>
+{% endblock %}
+

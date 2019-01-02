@@ -42,8 +42,8 @@ a.list-group-item .mask h5 {
 
 .boards {
     display: flex;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 48px;
+    padding-right: 48px;
     align-items: stretch;
     flex: 1;
 }
@@ -148,7 +148,7 @@ div.my-1.pb-2 > textarea#newConceptTitle.newConceptTitle.form-control:focus {
     color: #233A4C;
 }
 
-#btnSearchConcepts:focus {
+#inputSearchConcepts:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: 0;

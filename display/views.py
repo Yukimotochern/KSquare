@@ -2,10 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from knowledge.models import Concept
 from django.views.generic import ListView, View
 
-
-def home(request):
-
-    return render(request, 'public/homepage.html', locals())
+# Create your views here.
 
 
 def search_index(request):
@@ -122,3 +119,4 @@ class ArticleListView(ListView, View):
             return Concept.objects.filter(_title__icontains=search_name)
         else:
             return Concept.objects.all()
+

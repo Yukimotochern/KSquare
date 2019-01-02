@@ -1,0 +1,55 @@
+body{
+            background-color: #dcdcdc;
+        }
+        .form-horizontal{
+            margin-top: 50px;
+        }
+        .logo{
+            font-size: 35px;
+            font-weight: bold;
+            position: relative;
+            top: -8px;
+            color:black;
+            padding-left: 25px;
+        }
+        .logo:hover{
+            text-decoration: none;
+            color:black;
+        }
+        .card-deck{
+            margin: 20px;
+        }
+        .recommed_concept{
+            margin: 5px;
+            min-height: 300px;
+        }
+        .box2_btn{
+            margin-top: 25px;
+            width: 100%;
+        }
+        .hot_concepts{
+            min-height: 400px;
+        }
+        .select{
+            float: right;
+            border:0;
+            background-color: rgba(0,0,0,0);
+            outline:none;
+        }
+        .go_btn{
+            position: absolute;left: 10px;bottom:10px;
+        }
+        .button_move{
+            float: right;
+        }
+        .button_move:hover{
+            opacity: 0.7;
+        }
+        .link_concepts_cards{
+            transition: transform 0.5s ease-in-out;
+        }
+        .some_tags{
+            overflow: hidden;
+            margin-top: 50px;
+            width:100%;
+        }

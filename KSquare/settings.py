@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'knowledge',
     'users',
     'tagging',
+    'display',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -167,7 +168,7 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True

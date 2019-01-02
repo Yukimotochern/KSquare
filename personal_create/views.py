@@ -1,18 +1,22 @@
 from django.shortcuts import render
 from knowledge.models import Concept, Link, Relation
 from django.http import JsonResponse
-from datetime import datetime
 from django import utils
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
-def fields(request):
+@login_required
+def fields(request, tab):
+    tab = tab
     return render(request, 'personal/create/fields.html', locals())
 
 
-def concepts(request):
+@login_required
+def concepts(request, tab):
+    tab = tab
     all_concepts = Concept.objects.all().order_by('id').reverse()
     if request.method == 'POST':
         try:

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load file %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'search_result.css' %}">
+<div class="jumbotron">
+    <div class="result container" id="result-container">
+        <div class="row " id="searchform">
+            <form class="form-horizontal" action="{% url 'result' %}" style="width: 100%;" method="get">
+                {% csrf_token %}
+              <div class="form-group row">
+                <div class="col-7 offset-2">
+                  <input type="text" class="form-control" id="result" placeholder="Enter your search" name="result">
+                </div>
+                  <div class="col-2">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+              </div>
+            </form>
+        </div>
+        <span class="text row">{{ text }}</span>
+        {% for foo in concepts %}
+            <a href="{% url 'TagView' tag_id=foo.id %}">
+                <div class="card">
+                    {% autoescape off %}
+                  <h5 class="card-header">{{ foo.title|highlight:search_name }}</h5>
+                    {% endautoescape %}
+                  <div class="card-body">
+                    <p>{{ foo.content|truncatechars:95 }}</p>
+                  </div>
+                </div>
+            </a>
+        {% endfor %}
+        <div class="page_box row mt-3 justify-content-center">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="{% url 'result' %}?p={{ page_obj.previous_page_number }}">上一页</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="javascript:void(0);">上一页</a></li>
+                {% endif %}
+
+                {% if left_has_more %}
+                    <li class="page-item"><a class="page-link" href="{% url 'result' %}?p=1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
+                {% endif %}
+
+                {% for left_page in left_pages %}
+                    <li class="page-item"><a class="page-link" href="{% url 'result' %}?p={{ left_page }}">{{ left_page }}</a></li>
+                {% endfor %}
+
+                <li class="active page-item"><a class="page-link" href="{% url 'result' %}?p={{ current_page }}">{{ current_page }}</a></li>
+
+                {% for right_page in right_pages %}
+                    <li class="page-item"><a class="page-link" href="{% url 'result' %}?p={{ right_page }}">{{ right_page }}</a></li>
+                {% endfor %}
+
+                {% if right_has_more %}
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
+                    <li class="page-item"><a class="page-link" href="{% url 'result' %}?p={{ num_pages }}">{{ num_pages }}</a></li>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="{% url 'result' %}?p={{ page_obj.next_page_number }}">下一页</a></li>
+                {% else %}
+                    <li class="disabled page-item"><a class="page-link" href="javascript:void(0);">下一页</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

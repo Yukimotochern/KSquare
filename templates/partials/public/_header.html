@@ -8,34 +8,33 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Square</a>
+                    <a class="nav-link
+                {% if 'search' in  request.path %}
+                    active
+                {% endif %}
+                " href="{% url 'search' %}">Square</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Group</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">F&nbsp;&&nbsp;Q</a>
+                <li class="nav-item
+                {% if request.path == '/' %}
+                    active
+                {% endif %}
+                    ">
+                    <a class="nav-link" href="{% url 'home' %}">Features</a>
                 </li>
                 <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="{% url 'concept_manage'%}">概念創建</a>-->
+                    <!--<a class="nav-link" href="/">Pricing</a>-->
                 <!--</li>-->
                 <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="{% url 'relation_manage' %}">連結創建</a>-->
+                    <!--<a class="nav-link" href="/">Group</a>-->
                 <!--</li>-->
                 <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="{% url 'all_concept' %}">探索學習</a>-->
+                    <!--<a class="nav-link" href="/">F&nbsp;&&nbsp;Q</a>-->
                 <!--</li>-->
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="{% url 'fields' %}">
+                        <a class="nav-link" href="{% url 'fields' '1'%}">
                             {% if user.socialaccount_set.all.0.get_avatar_url %}
                                 <i>
                                     <img id="user-icon" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
