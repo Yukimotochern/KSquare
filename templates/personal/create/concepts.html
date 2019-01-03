@@ -13,7 +13,7 @@
                     <input type="text" id="inputSearchConcepts" class="form-control plain" placeholder="搜尋概念" name="link_filtering_terms">
                 </div>
                 <div class="form-group col-sm-1 ml-1 mb-0">
-                    <button class="btn btn-light px-1 btnNewConcept"><i class="far fa-edit fa-lg"></i></button>
+                    <button class="btn btn-light px-1 btnNewConcept"><i class="fas fa-feather fa-lg"></i><!--<i class="far fa-edit fa-lg"></i>--></button>
                 </div>
             </div>
         </form>
@@ -112,8 +112,32 @@
             <input type="text" class="plain inputConceptTag mb-4 mx-5" placeholder="標籤分類，試著輸入『#我的分類/子分類/孫分類 #分類』">
             <div class="mb-3 plain mx-5 d-flex justify-content-end"><button class="mr-3 btn btn-info" id="saveAddConcept">儲存再新增</button><button class="mr-3 btn btn-danger" id="deleteConcept">刪除概念</button><button class="btn btn-success modify" id="saveConcept">儲存概念</button></div>
         {% else %}
-            <input class="plain inputConceptTitle mb-3 py-0 h3 mx-5 mt-4" type="text" placeholder="概念標題">
-            <textarea class="plain textareaConceptSummary mb-4 mx-5" placeholder="保持冷靜，寫點東西" name=""></textarea>
+            <input class="plain inputConceptTitle mb-3 p-0 h3 mx-5 mt-4" type="text" placeholder="概念標題" value="{{all_concepts.0.title}}">
+            <textarea class="plain textareaConceptSummary p-0 mb-3 mt-2 mx-5" maxlength="300" placeholder="保持冷靜，寫點東西" name="" cols="6">{{all_concepts.0.summary}}</textarea>
+            <hr class="separator my-0">
+            <div class="mb-4 mx-5 pt-2 halfLinksArea">
+                <div class="divAddLink justify-content-center d-flex">
+                    <button class="btnAddLink btn btn-link nounderline">
+                        <i class="fas fa-plus-circle mr-2"></i>新增連結
+                    </button>
+                </div>
+                <div class="listLinks">
+                    <div class="list-group-flush list-group">
+                        <!--<div class="list-group-item py-0">-->
+                            <!--<div class="d-flex justify-content-center  divRelationSet hasRelation">-->
+                                <!--<div class="mask d-flex justify-content-center newRelationGroup">-->
+                                    <!--<input type="text" class="plain-input ml-2 mr-1 newRelationTitle p-0" placeholder="關係名稱">-->
+                                    <!--<button class="btn-link btn pr-1"><i class="fas fa-check"></i></button>-->
+                                    <!--<button class="btn-link btn pl-1"><i class="fas fa-times"></i></button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="list-group-item">-->
+                            <!--<i class="fas fa-angle-down"></i><i class="fas fa-arrows-alt-v"></i><i class="fas fa-arrows-alt-h"></i><i class="fas fa-plus-square"></i><i class="far fa-plus-square"></i><i class="fas fa-angle-right"></i>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
             <input type="text" class="plain inputConceptTag mb-4 mx-5" placeholder="標籤分類，試著輸入『#分類/子分類/孫分類 #分類2』">
             <div class="mb-3 plain mx-5 d-flex justify-content-end"><button class="mr-3 btn btn-info d-none" id="saveAddConcept">儲存再新增</button><button class="mr-3 btn btn-danger d-none" id="deleteConcept">刪除概念</button><button class="btn btn-success modify" id="saveConcept">新增概念</button></div>
         {% endif %}
@@ -123,5 +147,16 @@
 {% endblock %}
 
 {% block js %}
+
+<!--Class declaration-->
+<script src="{% static '/js/object/personalOb.js'%}"></script>
+
+<!-- Ob insertion-->
+<script>
+
+</script>
+
+<!--DOM Manipulation-->
 <script src="{% static '/js/create/concepts.js'%}"></script>
+
 {% endblock %}

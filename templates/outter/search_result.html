@@ -26,7 +26,7 @@
                   <h5 class="card-header">{{ foo.title|highlight:search_name }}</h5>
                     {% endautoescape %}
                   <div class="card-body">
-                    <p>{{ foo.content|truncatechars:95 }}</p>
+                    <p>{{ foo.summary|truncatechars:95 }}</p>
                   </div>
                 </div>
             </a>
@@ -68,5 +68,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

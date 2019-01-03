@@ -1,5 +1,6 @@
 const btnNewConcept = document.querySelector('div#concepts.board form div div button.btnNewConcept')
 const inputSearchConcept = document.querySelector('div#concepts.board form div div input#inputSearchConcepts')
+const inputConceptTag = document.querySelector('.inputConceptTag')
 const listGroupConcepts = document.querySelector('div#all_concepts div.list-group.list-group-flush')
 const editTitle = document.querySelector('input.inputConceptTitle')
 const editSummary = document.querySelector('textarea.textareaConceptSummary')
@@ -28,12 +29,12 @@ window.addEventListener('load', function(event){
             }
         });
     })
+
+
 loadEventListeners()
 
 
 function loadEventListeners() {
-    
-
     for (let tagConcept of Array.from(listGroupConcepts.children)) {
     	if (tagConcept.classList.contains('noConcept')){
     		tagConcept.addEventListener('click', addNewConcept)
@@ -50,7 +51,11 @@ function loadEventListeners() {
     btnSaveConcept.addEventListener('click', saveConcept)
     btnDeleteConcept.addEventListener('click', deleteConcept)
     inputSearchConcept.addEventListener('input', searchConcepts)
-    inputSearchConcept.addEventListener('keypress', searchConcepts)
+	inputSearchConcept.addEventListener('keypress', searchConcepts)
+	if (currentEditingConcept) {
+		updateEditor(currentEditingConcept.classList.contains('notSaved'), getTitleInGroup(currentEditingConcept) == "", currentEditingConcept)
+	}
+	
 }
 
 
@@ -193,15 +198,24 @@ function searchConcepts(event) {
 }
 
 function getTitleInGroup(a) {
-	return a.querySelector('h5').textContent
+	if (a) {
+		return a.querySelector('h5').textContent
+	}
+	return ""
 }
 
 function getSummaryInGroup(a) {
-	return a.querySelector('p.concept-summary').textContent
+	if (a) {
+		return a.querySelector('p.concept-summary').textContent
+	}
+	return ""
 }
 
 function getIdInGroup(a) {
-	return a.querySelector('input[type="hidden"]').value
+	if (a) {
+		return a.querySelector('input[type="hidden"]').value
+	}
+	return ""
 }
 
 function setInGroup(currentTab, title, summary, id) {

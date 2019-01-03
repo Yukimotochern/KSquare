@@ -11,8 +11,8 @@ from users.models import CustomUser
 
 class Concept(models.Model):
     id = models.AutoField(primary_key=True)
-    _title = models.CharField(max_length=30)
-    summary = models.CharField(max_length=150, null=True)
+    _title = models.CharField(max_length=100)
+    summary = models.CharField(max_length=300, null=True)
     content = models.TextField(null=True)
     create_time = models.DateTimeField(null=True)
     modify_time = models.DateTimeField(null=True)

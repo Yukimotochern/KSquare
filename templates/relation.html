@@ -1,14 +1,18 @@
 {% extends 'personal/base_personal.html' %}
+{% load static %}
 {% block content %}
-<div class="container">
-    <h2 class="display-4">Here's Your Relations and Links</h2>
+<!--Custon CSS-->
+<!--<link rel="stylesheet" type="text/css" href = "{% static '/css/personal_create/fields.css' %}"/>-->
+<link rel="stylesheet" type="text/css" href = "{% static '/css/personal_create/relations.css' %}"/>
+{% include "partials/personal/_fields_tab.html" %}
+<div class="container scroll">
     <div class="row">
         <div class="col-md-4">
 
             <h3 class="display-5 my-4">連結種類（Relation）</h3>
             <!--# New Relation-->
             <div class="card bg-info text-white my-3">
-                <form action="{% url 'create_relation' %}" method="post">
+                <form action="{% url 'create_relation' tab%}" method="post">
                     {% csrf_token %}
                     <div class="card-header">
                         <input type="text" class="form-control mt-2 h3 bg-info text-white" name="new_relation_title" placeholder="連結種類標題">
@@ -59,7 +63,7 @@
                         {% if edit_relation_id == re.id|slugify %}
                             <!--# Edit Relation-->
                             <div class="card text-white bg-info text-white my-3" >
-                                <form action="{% url 'edit_relation_save' %}" method="post">
+                                <form action="{% url 'edit_relation_save' tab %}" method="post">
                                     {% csrf_token %}
                                     <input type="hidden" name="to_edit_relation" value="{{re.id}}"/>
                                     <div class="card-header">
@@ -102,8 +106,8 @@
                                     <h4 class="d-inline">{{re.title}}</h4>
                                     <form method="post" class="d-inline">
                                         {% csrf_token %}
-                                        <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'edit_relation' %}" name="edit_relation_id"><i class="fas fa-pen"></i></button>
-                                        <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'delete_relation' %}" name="delete_relation_id"><i class="far fa-trash-alt"></i></button>
+                                        <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'edit_relation' tab %}" name="edit_relation_id"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'delete_relation' tab %}" name="delete_relation_id"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                                 <div class="card-body">
@@ -118,8 +122,8 @@
                                 <h4 class="d-inline">{{re.title}}</h4>
                                 <form method="post" class="d-inline">
                                     {% csrf_token %}
-                                    <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'edit_relation' %}" name="edit_relation_id"><i class="fas fa-pen"></i></button>
-                                    <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'delete_relation' %}" name="delete_relation_id"><i class="far fa-trash-alt"></i></button>
+                                    <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'edit_relation' tab %}" name="edit_relation_id"><i class="fas fa-pen"></i></button>
+                                    <button class="btn btn-link" type="submit" value="{{re.id}}" formaction="{% url 'delete_relation' tab %}" name="delete_relation_id"><i class="far fa-trash-alt"></i></button>
                                 </form>
                             </div>
                             <div class="card-body">
@@ -141,7 +145,7 @@
             <!--New Link-->
             <div class="list-group">
                 <div class="list-group-item">
-                    <form action="{% url 'create_link'%}" method="post">
+                    <form action="{% url 'create_link' tab %}" method="post">
                         {% csrf_token %}
                         <div class="list-group-heading">
                             <div class="form-group form-inline">
@@ -205,7 +209,7 @@
                                     <div class="list-group-item-heading border border-top-0 border-left-0 border-right-0 p-1 d-flex justify-content-between" style="color: {{tl.relation_main.color}}">
                                         <h4 class="d-inline">{{tl.relation_main.title}}</h4>
                                     </div>
-                                    <form action="{% url 'edit_link_save' %}" method="post">
+                                    <form action="{% url 'edit_link_save' tab %}" method="post">
                                         {% csrf_token %}
                                         <div class="row list-group-item-text mt-2">
                                             <input type="hidden" name="edited_link_id" value="{{tl.id}}">
@@ -242,12 +246,12 @@
                             {% else %}
                                 <!--# Display Link-->
                                 <div class="list-group-item">
-                                    <div class="list-group-item-heading border border-top-0 border-left-0 border-right-0 p-1 d-flex justify-content-between" style="color: {{tl.relation_main.color}}">
+                                    <div class="list-group-item-heading border border-top-0 border-left-0 border-right-0 p-1 d-flex justify-content-between">
                                         <h4 class="d-inline">{{tl.relation_main.title}}</h4>
                                         <form method="post" class="d-inline">
                                             {% csrf_token %}
-                                            <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'edit_link' %}" name="edit_link_id"><i class="fas fa-pen"></i></button>
-                                            <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'delete_link' %}" name="delete_link_id"><i class="far fa-trash-alt"></i></button>
+                                            <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'edit_link' tab %}" name="edit_link_id"><i class="fas fa-pen"></i></button>
+                                            <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'delete_link' tab %}" name="delete_link_id"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </div>
                                     <div class="row list-group-item-text my-2">
@@ -281,8 +285,8 @@
                                     <h4 class="d-inline">{{tl.relation_main.title}}</h4>
                                     <form method="post" class="d-inline">
                                         {% csrf_token %}
-                                        <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'edit_link' %}" name="edit_link_id"><i class="fas fa-pen"></i></button>
-                                        <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'delete_link' %}" name="delete_link_id"><i class="far fa-trash-alt"></i></button>
+                                        <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'edit_link' tab %}" name="edit_link_id"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-link" type="submit" value="{{tl.id}}" formaction="{% url 'delete_link' tab %}" name="delete_link_id"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                                 <div class="row list-group-item-text my-2">

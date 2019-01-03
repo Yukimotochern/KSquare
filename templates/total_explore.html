@@ -2,10 +2,8 @@
 {% block content %}
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href = "{% static '/css/total_explore.css' %}"/>
-<div class="container " id="main_back_learn_view">
-    <h3 class="display-4">Pick One to Start Your Journey!</h3>
-    <div class="lead">Enjoy~~</div>
-    <div class="container m-3">
+<div class="container scroll" id="main_back_learn_view">
+    <div class="container m-3 scroll">
         {% if concepts %}
             {% for co in concepts %}
                 <div class="card m-3">
@@ -24,7 +22,7 @@
 
                     </div>
                     <div class="card-body m-0 py-1 scroll-box">
-                        <p class="card-text">{{co.content|linebreaks}}</p>
+                        <p class="card-text">{{co.summary|linebreaks}}</p>
                     </div>
                 </div>
             {% endfor %}

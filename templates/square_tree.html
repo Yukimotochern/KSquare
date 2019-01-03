@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="card-body py-1 m-0 scroll-box">
-                            <p class="card-text">{{cell.ob.content|linebreaks}}</p>
+                            <p class="card-text">{{cell.ob.summary|linebreaks}}</p>
                         </div>
                     </div>
                 {% endif %}
@@ -45,7 +45,7 @@
             <div class="card current_view">
                 <div class="card-header h1">{{tree_view_model.main_view_concept.title}}</div>
                 <div class="card-body py-1 m-0 scroll-box">
-                    <p class="card-text">{{tree_view_model.main_view_concept.content|linebreaks}}</p>
+                    <p class="card-text">{{tree_view_model.main_view_concept.summary|linebreaks}}</p>
                 </div>
             </div>
         </div>

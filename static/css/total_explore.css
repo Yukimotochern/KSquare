@@ -23,4 +23,8 @@ div.card > div.scroll-box {
 }
 
 
+.scroll {
+    overflow: scroll;
+}
+
 

@@ -41,7 +41,7 @@
                                   </div>
                               </div>
                               <div class="card-body">
-                                <p class="card-text">{{ foo.content|truncatechars:75 }}</p>
+                                <p class="card-text">{{ foo.summary|truncatechars:75 }}</p>
                                 <button class="btn btn-primary go_btn" href="{% url 'TagView' tag_id=foo.id %}">GO!</button>
                               </div>
                             </div>
@@ -64,7 +64,7 @@
                                   </div>
                               </div>
                               <div class="card-body">
-                                <p class="card-text">{{ foo.content|truncatechars:75 }}</p>
+                                <p class="card-text">{{ foo.summary|truncatechars:75 }}</p>
                                 <button class="btn btn-primary go_btn" href="{% url 'TagView' tag_id=foo.id %}">GO!</button>
                               </div>
                             </div>
@@ -87,7 +87,7 @@
                                   </div>
                               </div>
                               <div class="card-body">
-                                <p class="card-text">{{ foo.content|truncatechars:75 }}</p>
+                                <p class="card-text">{{ foo.summary|truncatechars:75 }}</p>
                                 <button class="btn btn-primary go_btn" href="{% url 'TagView' tag_id=foo.id %}">GO!</button>
                               </div>
                             </div>
@@ -118,7 +118,7 @@
                 <div class="card-body">
                     <div class="list-group">
                         {% for foo in hot_concept %}
-                            <a href="{% url 'TagView' tag_id=foo.id %}" class="list-group-item list-group-item-action pop" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{ foo.content|truncatechars:30 }}">
+                            <a href="{% url 'TagView' tag_id=foo.id %}" class="list-group-item list-group-item-action pop" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{ foo.summary|truncatechars:30 }}">
                             {{ foo.title|truncatechars:15 }}
                           </a>
                         {% endfor %}
@@ -167,7 +167,7 @@
                 <a href="{% url 'TagView' tag_id=foo.id %}" class="card link_cards card-default">
                  <div class="card-header">{{ foo.title|truncatechars:10 }}
                  </div>
-                  <p class="card-body">{{ foo.content|truncatechars:45 }}</p>
+                  <p class="card-body">{{ foo.summary|truncatechars:45 }}</p>
               </a>
               {% endfor %}
           </div>
@@ -186,7 +186,7 @@
                 <a href="{% url 'TagView' tag_id=foo.id %}" class="card link_cards card-default">
                  <div class="card-header">{{ foo.title|truncatechars:10 }}
                  </div>
-                  <p class="card-body">{{ foo.content|truncatechars:45 }}</p>
+                  <p class="card-body">{{ foo.summary|truncatechars:45 }}</p>
               </a>
               {% endfor %}
           </div>
@@ -204,7 +204,7 @@
                 <a href="{% url 'TagView' tag_id=foo.id %}" class="card link_cards card-default">
                  <div class="card-header">{{ foo.title|truncatechars:10 }}
                  </div>
-                  <p class="card-body">{{ foo.content|truncatechars:45 }}</p>
+                  <p class="card-body">{{ foo.summary|truncatechars:45 }}</p>
               </a>
               {% endfor %}
           </div>

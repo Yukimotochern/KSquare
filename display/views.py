@@ -1,17 +1,21 @@
 from django.shortcuts import render, redirect, reverse
-from knowledge.models import Concept
+from knowledge.models import Concept, ToLink, ForthLink, Relation
 from django.views.generic import ListView, View
+from tagging.models import TaggedItem, Tag
+from django.contrib.auth.decorators import login_required
+import copy
+from django.utils import timezone
 
 # Create your views here.
 
 
 def search_index(request):
     index_concept = Concept.objects.all()[:9]
-    hot_concept = Concept.objects.all()[:8]
-    history_concept = Concept.objects.all()[:8]
-    new_concept = Concept.objects.all()[:8]
-    recommend_concept = Concept.objects.all()[:8]
-    attention_concept = Concept.objects.all()[:8]
+    hot_concept = TaggedItem.objects.get_by_model(Concept, 'hotSearch')[:8]
+    history_concept = TaggedItem.objects.get_by_model(Concept, 'history')[:8]
+    new_concept = TaggedItem.objects.get_by_model(Concept, 'justedited')[:8]
+    recommend_concept = TaggedItem.objects.get_by_model(Concept, 'recommand')[:8]
+    attention_concept = TaggedItem.objects.get_by_model(Concept, 'follow')[:8]
     context = {
         'first_index_concept': index_concept[:3],
         'second_index_concept': index_concept[3:6],
@@ -26,11 +30,41 @@ def search_index(request):
     }
     return render(request, 'outter/search2.html', context=context)
 
-
+@login_required
 def tag_view(request, tag_id):
     tag = Concept.objects.get(id=tag_id)
+    relations = []
+    for links in tag.to_links.all():
+        if links.relation_main not in relations:
+            relations.append(links.relation_main)
+    for links in tag.forth_links.all():
+        if links.relation_main not in relations:
+            relations.append(links.relation_main)
+    for relation in relations:
+        relation.concepts = []
+    for relation in relations:
+        for t in tag.to_links.all():
+            if t.relation_main == relation:
+                relation.concepts.append(t.forth_link_partner.related_concept)
+        for t in tag.forth_links.all():
+            if t.relation_main == relation:
+                relation.concepts.append(t.to_link_partner.related_concept)
 
-    return render(request,'outter/tag_view.html',context={'tag':tag})
+    to_link = ToLink.objects.all().order_by('id').reverse()
+    forth_link = ForthLink.objects.all().order_by('id').reverse()
+    relation = Relation.objects.all().order_by('id').reverse()
+    if request.method == "POST":
+        id_to_have = request.POST["idHave"]
+        concept = Concept.objects.get(id=id_to_have)
+        if concept:
+            co_copy = Concept.objects.create()
+            co_copy.title = concept.title
+            co_copy.summary = concept.summary
+            co_copy.owner = request.user
+            co_copy.create_time = timezone.now()
+            co_copy.save()
+
+    return render(request,'outter/tag_view.html', locals())
 
 
 # def search_result(request):

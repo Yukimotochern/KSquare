@@ -1,14 +1,14 @@
 <div class="container-fluid px-5 mt-3 mb-0">
     <ul class="nav nav-tabs" id="create-tab">
-        <li class="nav-item">
-            <a
-                {% if 'fields' in request.path %}
-                    class="nav-link active"
-                {% else %}
-                    class="nav-link"
-                {% endif %}
-            href="{% url 'fields' tab%}">Fields</a>
-        </li>
+        <!--<li class="nav-item">-->
+            <!--<a-->
+                <!--{% if 'fields' in request.path %}-->
+                    <!--class="nav-link active"-->
+                <!--{% else %}-->
+                    <!--class="nav-link"-->
+                <!--{% endif %}-->
+            <!--href="{% url 'fields' tab%}">Fields</a>-->
+        <!--</li>-->
         <li class="nav-item">
             <a
             {% if 'concepts' in request.path %}
@@ -16,13 +16,25 @@
                 {% else %}
                     class="nav-link"
                 {% endif %}
-            href="{% url 'concepts' tab%}">Concepts</a>
+            href="{% url 'concepts' tab %}">Concepts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Templates</a>
+            <a
+            {% if 'templates' in request.path %}
+                    class="nav-link active"
+                {% else %}
+                    class="nav-link"
+                {% endif %}
+            href="{% url 'templates' tab %}">Templates</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Paths</a>
+            <a
+            {% if 'relation' in request.path %}
+                    class="nav-link active"
+                {% else %}
+                    class="nav-link"
+                {% endif %}
+            href="{% url 'relation_manage' tab %}">Relation</a>
         </li>
     </ul>
 </div>

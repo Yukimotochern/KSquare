@@ -1,0 +1,23 @@
+{% extends 'personal/base_personal.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--Custon CSS-->
+<link rel="stylesheet" type="text/css" href = "{% static '/css/personal_create/fields.css' %}"/>
+{% include "partials/personal/_fields_tab.html" %}
+<div class="boards">
+    <div class="board" id="document_area">
+        <form action="{% url 'templates' tab%}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="document_text_area"></label>
+                <textarea name="document_content" id="document_text_area" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-info form-control">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

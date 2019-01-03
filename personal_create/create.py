@@ -2,7 +2,7 @@ import re
 import copy
 
 # patterns
-title_pattern = re.compile(r"(?P<title>[^@:#&＠：＃＆]+(?<! ))([:：]) *(?P<labels>.+)?")
+title_pattern = re.compile(r"(?P<title>[^@:#&＠：＃＆]+(?<! )) *([:：]) *(?P<labels>.+)?")
 full_link_pattern = re.compile(r"""
     [＠@]
     ((\ *(?P<title1>(?!\ )[^@:#&＠：＃＆]+(?<!\ ))\ *
@@ -131,7 +131,9 @@ class Level:
             else:
                 front = '\n'
         if pure_text_fall_back:
+
             if last_open_concept:
+
                 if last_open_concept_level > 1:
                     front += '\t' * (last_open_concept_level - 1)
                 last_open_concept.add_concept_content(txt, front=front)
@@ -252,10 +254,12 @@ class TxtParser:
         for level in self.chain.levels:
             concepts_list.extend(level.closed_concepts)
             links_list.extend(level.closed_links)
-        for concept in concepts_list:
-            print(concept)
-        for link in links_list:
-            print(link)
+        # for link in links_list:
+        #     print(link)
+        # for concept in concepts_list:
+        #     print(concept)
+        result = (concepts_list, links_list)
+        return result
 
 
 class Title:

@@ -39,7 +39,7 @@
                             <ul class="navbar-nav ml-auto">
                                 {% if user.is_authenticated %}
                                     <li class="nav-item mr-1 active">
-                                        <a class="nav-link" href="{% url 'fields' %}">
+                                        <a class="nav-link" href="{% url 'concepts' 1%}">
                                             {% if user.socialaccount_set.all.0.get_avatar_url %}
                                                 <i>
                                                     <img id="user-icon" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />

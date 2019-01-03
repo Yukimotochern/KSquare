@@ -66,6 +66,7 @@ a.list-group-item .mask h5 {
 /*  Concepts    */
 #concepts.board {
     min-width: 300px;
+    max-width: 300px;
 }
 
 .board.concept-editor {
@@ -95,7 +96,7 @@ a.list-group-item .mask h5 {
     resize : none;
     background-color: inherit;
     height: auto;
-    flex: 1;
+    flex: 1.2;
 
 }
 
@@ -104,13 +105,13 @@ a.list-group-item .mask h5 {
 }
 
 .concept-summary {
+   line-height: 1.2em;     /* fallback */
+   height: 2.5em;      /* fallback */
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
    overflow: hidden;
    text-overflow: ellipsis;
-   display: -webkit-box;
-   line-height: 1.2em;     /* fallback */
-   max-height: 2.5em;      /* fallback */
-   -webkit-line-clamp: 2; /* number of lines to show */
-   -webkit-box-orient: vertical;
 }
 
 .card-footer.btn {
@@ -118,7 +119,6 @@ a.list-group-item .mask h5 {
 }
 
 div.my-1.pb-2 > textarea.newConceptTitle.form-control {
-
     resize : none;
     outline : none;
 }
@@ -174,4 +174,39 @@ li.nav-item a.nav-link.active {
     background-color: inherit;
     border-bottom-color: #fafafa;
 }
+
+.halfLinksArea {
+    flex: 1.5;
+}
+
+hr.separator {
+    margin-left: 36px;
+    margin-right: 36px;
+}
+
+.nounderline {
+  text-decoration: none !important
+}
+
+.btn-link {
+    color: #8197C1;
+}
+
+.plain-input {
+    outline: 0;
+    border: 0px;
+    background-color: inherit;
+
+}
+
+input.newRelationTitle {
+    width: 100px;
+}
+
+.newRelationGroup {
+    border-bottom: 1px solid #E4E4E4;
+}
+
+
+
 

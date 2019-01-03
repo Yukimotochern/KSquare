@@ -12,19 +12,19 @@ from knowledge.treeview import TreeViewModel, positioning
 
 
 def concept_view(request):
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     return render(request, 'concepts.html', locals())
 
 
 def create_concept(request):
     dd = Concept.objects.create(title=request.POST["newtitle"], content=request.POST["newcontent"])
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     return render(request, 'concepts.html', locals())
 
 
 def edit_concept(request):
     edit_id = request.POST["edit_id"]
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     return render(request, 'concepts.html', locals())
 
 
@@ -36,7 +36,7 @@ def edit_concept_save(request):
         to_edit.save()
     except:
         pass
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     return render(request, 'concepts.html', locals())
 
 
@@ -46,24 +46,25 @@ def delete_concept(request):
         to_delete.delete()
     except:
         pass
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     return render(request, 'concepts.html', locals())
 
 
 #  Relation Part
 
 
-def relation_view(request):
-
+def relation_view(request, tab):
+    tab = tab
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def create_relation(request):
+def create_relation(request, tab):
+    tab = tab
     # Function Part
     rr = Relation.objects.create(title=request.POST["new_relation_title"],
                                  content=request.POST["new_relation_content"],
@@ -74,12 +75,13 @@ def create_relation(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def edit_relation(request):
+def edit_relation(request, tab):
+    tab = tab
     # Function Part
     edit_view = True
     edit_relation_id = request.POST["edit_relation_id"]
@@ -87,12 +89,12 @@ def edit_relation(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def edit_relation_save(request):
+def edit_relation_save(request, tab):
     # Function Part
     try:
         to_edit_relation = Relation.objects.get(id=int(request.POST["to_edit_relation"]))
@@ -108,12 +110,12 @@ def edit_relation_save(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def delete_relation(request):
+def delete_relation(request, tab):
     # Function Part
     try:
         to_delete_relation = Relation.objects.get(id=int(request.POST["delete_relation_id"]))
@@ -124,14 +126,14 @@ def delete_relation(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
 # Link Part
 @transaction.atomic
-def create_link(request):
+def create_link(request, tab):
     with transaction.atomic():
         # Find the 'to' concept objects if no create one
         to_concept = get_or_create_by_title(Concept, request.POST["new_to_concept_title"])
@@ -148,24 +150,24 @@ def create_link(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def edit_link(request):
+def edit_link(request, tab):
     edit_link_view = True
     edit_link_id = request.POST["edit_link_id"]
 
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def edit_link_save(request):
+def edit_link_save(request, tab):
     # Function Part
     try:
         to_edit_link = ToLink.objects.get(id=int(request.POST["edited_link_id"]))
@@ -180,12 +182,12 @@ def edit_link_save(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     return render(request, 'relation.html', locals())
 
 
-def delete_link(request):
+def delete_link(request, tab):
     # Function Part
     try:
         to_delete_link = ToLink.objects.get(id=int(request.POST["delete_link_id"]))
@@ -195,7 +197,7 @@ def delete_link(request):
     # Visual Collect
     to_link = ToLink.objects.all().order_by('id').reverse()
     forth_link = ForthLink.objects.all().order_by('id').reverse()
-    concept = Concept.objects.all().order_by('id').reverse()
+    concept = Concept.objects.filter(owner=request.user).order_by('id').reverse()
     relation = Relation.objects.all().order_by('id').reverse()
     print(len(to_link) == len(forth_link))
     return render(request, 'relation.html', locals())
@@ -218,15 +220,16 @@ def find_to_name(request):
 #  Tree Explore Part
 
 
-def tree(request, main_view_id):
+def tree(request, main_view_id, tab):
+    tab = tab
     main_model_concept = get_object_or_404(Concept, id=main_view_id)
     tree_view_model = TreeViewModel(main_model_concept)
     positioned_page = positioning(tree_view_model.tree_cell_page)
     return render(request, 'square_tree.html', locals())
 
 
-def all_concepts(request):
-    concepts = Concept.objects.all()
+def all_concepts(request, tab):
+    concepts = Concept.objects.filter(owner=request.user)
     return render(request, 'total_explore.html', locals())
 
 
